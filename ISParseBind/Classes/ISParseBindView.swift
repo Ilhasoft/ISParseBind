@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-import KingFisher
+import Kingfisher
 
 public protocol ISParseBindViewDelegate {
     func willSave(view:ISParseBindView,object:PFObject) -> PFObject?
@@ -77,7 +77,7 @@ open class ISParseBindView: UIView {
                 break
             }
         }
-        return ""
+        return NSNull()
     }
     
     private func getFieldWithCast(_ fieldValue:AnyObject) -> AnyObject{
@@ -191,7 +191,7 @@ open class ISParseBindView: UIView {
                         textView.text = String(describing: pfObject.value(forKey: key)!)
                     }else if let imageView = component as? UIImageView {
                         if let pfFile = pfObject.value(forKey: key) as? PFFile {
-                            imageView.kf.setImage(with: URL(string:pfFile.url))
+                            imageView.kf.setImage(with: URL(string:pfFile.url!))
                         }
                     }
                     
@@ -269,31 +269,36 @@ open class ISParseBindView: UIView {
         self.sortFields()
         
         for field in self.fields {
-            var fieldPath:String!
-            var fieldValue:Any!
-            var fieldType:ISParseBindFieldType!
+            
+            var fieldPath = (field as! ISParseBindPersistable).fieldPath
+            var fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindPersistable).fieldType)
+            var fieldValue:AnyObject!
+            
+            guard fieldPath != nil else {
+                print("fieldPath is nil")
+                continue
+            }
+            
+            guard fieldType != nil else {
+                print("fieldType is nil")
+                continue
+            }
             
             if let textField = field as? ISParseBindPersistable , textField is UITextField
                 && textField.fieldPath.characters.count > 0 {
                 
                 if ((textField as! UITextField).text!.characters.count) > 0 {
-                    fieldValue = (textField as! UITextField).text!
+                    fieldValue = (textField as! UITextField).text! as AnyObject!
                 }else {
-                    fieldValue = NSNull()
+                    fieldValue = "" as! AnyObject
                 }
                 
-                fieldType = ISParseBindFieldType(rawValue: textField.fieldType)
-                
-                if fieldType == nil {
-                    print("fieldType \(fieldType) is not valid")
-                    return
-                }
             }else if let textView = field as? ISParseBindPersistable, textView is UITextView
                 && textView.fieldPath.characters.count > 0 {
                 if ((textView as! UITextView).text!.characters.count) > 0 {
-                    fieldValue = (textView as! UITextView).text!
+                    fieldValue = (textView as! UITextView).text! as AnyObject!
                 }else {
-                    fieldValue = NSNull()
+                    fieldValue = "" as! AnyObject
                 }
                 
                 fieldType = ISParseBindFieldType(rawValue: textView.fieldType)
@@ -314,8 +319,8 @@ open class ISParseBindView: UIView {
                 continue
             }
             
-            fieldValue = self.getParseFieldValue(fieldValue: fieldValue as AnyObject, fieldType: fieldType)
-            fieldPath = (field as! ISParseBindPersistable).fieldPath
+            fieldValue = self.getParseFieldValue(fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
+            
             self.fieldAndValues.append([fieldPath:fieldValue])
             
         }
