@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   #  When using multiple platforms
   s.ios.deployment_target = '9.0'
-  s.source       = { :git => "http://EXAMPLE/ISParseBind.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Ilhasoft/ISParseBind.git", :tag => "#{s.version}" }
   s.source_files  = "Classes", "Classes/**/*"
   #s.exclude_files = "Classes/Exclude"
 
