@@ -42,4 +42,12 @@ open class ISParseBindTextField: UITextField, ISParseBindPersistable {
         }
     }
     
+    public func willFill(value: Any) -> Any? {
+        if self.fieldPath == "usuario.nascimento" {
+            return "\(value as! String) Nasceu!"
+        }
+        return value
+    }
+    
+    
 }

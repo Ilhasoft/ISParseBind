@@ -186,7 +186,13 @@ open class ISParseBindView: UIView {
                 }else {
                     
                     if let textField = component as? UITextField {
-                        textField.text = String(describing: pfObject.value(forKey: key)!)
+                        var value = String(describing: pfObject.value(forKey: key)!)                        
+                        let persistableComponent = (textField as! ISParseBindPersistable)
+                        if let v = persistableComponent.willFill?(value: value) {
+                            value = v as! String
+                        }
+                        textField.text = value
+                        persistableComponent.didFill?(value: value)
                     }else if let textView = component as? UITextView {
                         textView.text = String(describing: pfObject.value(forKey: key)!)
                     }else if let imageView = component as? UIImageView {

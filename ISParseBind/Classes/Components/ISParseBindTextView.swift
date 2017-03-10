@@ -39,4 +39,12 @@ open class ISParseBindTextView: UITextView, ISParseBindPersistable {
             self.layer.addSublayer(bottomLine)
         }
     }
+    
+    public func willSetValue(value: Any) -> Any? {
+        return value
+    }
+    
+    public func didSetValue(value: Any) {
+        
+    }
 }
