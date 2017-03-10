@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		6580E40D1E72019E00B02B86 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 6580E40B1E72019E00B02B86 /* ISParseBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4161E72ED6100B02B86 /* ISParseBindView.swift */; };
+		6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */; };
+		6580E41C1E730B3E00B02B86 /* ISParseBindPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E41B1E730B3E00B02B86 /* ISParseBindPersistable.swift */; };
+		6580E41F1E730BC000B02B86 /* ISParseBindTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E41E1E730BC000B02B86 /* ISParseBindTextField.swift */; };
+		6580E4211E730CC500B02B86 /* ISParseBindTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4201E730CC500B02B86 /* ISParseBindTextView.swift */; };
+		6580E4251E730D9500B02B86 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4231E730D9500B02B86 /* DictionaryExtension.swift */; };
+		6580E4261E730D9500B02B86 /* ISParseBindFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */; };
+		6580E4281E73110700B02B86 /* ISParseBindStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +23,13 @@
 		6580E40B1E72019E00B02B86 /* ISParseBind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISParseBind.h; sourceTree = "<group>"; };
 		6580E40C1E72019E00B02B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6580E4161E72ED6100B02B86 /* ISParseBindView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindView.swift; sourceTree = "<group>"; };
+		6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindEntityBuilder.swift; sourceTree = "<group>"; };
+		6580E41B1E730B3E00B02B86 /* ISParseBindPersistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindPersistable.swift; sourceTree = "<group>"; };
+		6580E41E1E730BC000B02B86 /* ISParseBindTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindTextField.swift; sourceTree = "<group>"; };
+		6580E4201E730CC500B02B86 /* ISParseBindTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindTextView.swift; sourceTree = "<group>"; };
+		6580E4231E730D9500B02B86 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindFieldType.swift; sourceTree = "<group>"; };
+		6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindStringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +73,11 @@
 		6580E4131E7201AA00B02B86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6580E4151E72D5E900B02B86 /* CustomComponents */,
+				6580E4221E730D8400B02B86 /* Util */,
+				6580E41D1E730BAD00B02B86 /* Components */,
+				6580E41A1E730B3700B02B86 /* Protocols */,
 				6580E4161E72ED6100B02B86 /* ISParseBindView.swift */,
+				6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -72,11 +89,31 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		6580E4151E72D5E900B02B86 /* CustomComponents */ = {
+		6580E41A1E730B3700B02B86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				6580E41B1E730B3E00B02B86 /* ISParseBindPersistable.swift */,
 			);
-			path = CustomComponents;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6580E41D1E730BAD00B02B86 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6580E41E1E730BC000B02B86 /* ISParseBindTextField.swift */,
+				6580E4201E730CC500B02B86 /* ISParseBindTextView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6580E4221E730D8400B02B86 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */,
+				6580E4231E730D9500B02B86 /* DictionaryExtension.swift */,
+				6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6580E4211E730CC500B02B86 /* ISParseBindTextView.swift in Sources */,
+				6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */,
+				6580E4281E73110700B02B86 /* ISParseBindStringExtension.swift in Sources */,
+				6580E41F1E730BC000B02B86 /* ISParseBindTextField.swift in Sources */,
+				6580E4261E730D9500B02B86 /* ISParseBindFieldType.swift in Sources */,
+				6580E4251E730D9500B02B86 /* DictionaryExtension.swift in Sources */,
+				6580E41C1E730B3E00B02B86 /* ISParseBindPersistable.swift in Sources */,
 				6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

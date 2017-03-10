@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import KingFisher
 
 public protocol ISParseBindViewDelegate {
     func willSave(view:ISParseBindView,object:PFObject) -> PFObject?
@@ -19,7 +20,7 @@ open class ISParseBindView: UIView {
     
     @IBOutlet open var fields:[AnyObject]!
     
-    //fieldAndValues store fieldNames fieldValues of ISPersistable fields
+    //fieldAndValues store fieldNames fieldValues of ISParseBindPersistable fields
     private var fieldAndValues = [[String:Any]]()
     
     //currentKeyPath store fieldName keyPath separated by '.' that will be used on search that keys in PFQuery of fetchedParseObject
@@ -47,7 +48,7 @@ open class ISParseBindView: UIView {
     
     public var delegate:ISParseBindViewDelegate?
     
-    private func getParseFieldValue(fieldValue:AnyObject,fieldType:ISParseFieldType) -> Any {
+    private func getParseFieldValue(fieldValue:AnyObject,fieldType:ISParseBindFieldType) -> Any {
         
         var fieldValue = fieldValue
         
@@ -69,10 +70,6 @@ open class ISParseBindView: UIView {
                 }else{
                     print("FieldType Image but the value is not a Image")
                 }
-                return fieldValue
-                break
-            case .Array:
-                fieldValue = [getFieldWithCast(fieldValue)] as [Any] as AnyObject
                 return fieldValue
                 break
             default:
@@ -97,7 +94,7 @@ open class ISParseBindView: UIView {
         
         sortFields()
         for field in fields {
-            let fieldNamePath = (field as! ISPersistable).fieldName.components(separatedBy:".")
+            let fieldNamePath = (field as! ISParseBindPersistable).fieldPath.components(separatedBy:".")
             
             if !fieldNamePath.isEmpty {
                 mainEntity = fieldNamePath.first!
@@ -125,10 +122,10 @@ open class ISParseBindView: UIView {
         
         if !fields.isEmpty {
             
-            let filtered = fields.filter {(!($0 is ISPersistable))}
+            let filtered = fields.filter {(!($0 is ISParseBindPersistable))}
             
             if !filtered.isEmpty {
-                print("All fields must implement ISPersistable protocol")
+                print("All fields must implement ISParseBindPersistable protocol")
                 return
             }else {
                 buildIncludeKeys()
@@ -140,7 +137,7 @@ open class ISParseBindView: UIView {
         if let data = self.parseObject {
             
             let query = PFQuery(className: data.parseClassName)
-            query.getDataFromLocalStoreElseSetupCachePolicy(cachePolicy: .networkElseCache)
+            query.cachePolicy = .networkElseCache
             
             query.includeKeys(self.includeKeys)
             
@@ -167,7 +164,7 @@ open class ISParseBindView: UIView {
         }
     }
     
-    private func extractValueAndUpdateComponent(pfObject:PFObject,textField:UITextField) {
+    private func extractValueAndUpdateComponent(pfObject:PFObject,component:UIView) {
         
         var valueIsPFObject = false
         
@@ -178,17 +175,26 @@ open class ISParseBindView: UIView {
                 if filtered.isEmpty {
                     let ob = pfObject.value(forKey: key) as! PFObject
                     nextObjectQueue.append(ob)
-                    extractValueAndUpdateComponent(pfObject:ob,textField:textField)
+                    extractValueAndUpdateComponent(pfObject:ob,component:component)
                 }
                 continue
             }
             if key == currentKeyPath.last {
                 
                 if let pfObject = pfObject.value(forKey: key) as? PFObject {
-                    extractValueAndUpdateComponent(pfObject: pfObject, textField: textField)
+                    extractValueAndUpdateComponent(pfObject: pfObject, component: component)
                 }else {
-                    //print("\(pfObject.value(forKey: key))")
-                    textField.text = String(describing: pfObject.value(forKey: key)!)
+                    
+                    if let textField = component as? UITextField {
+                        textField.text = String(describing: pfObject.value(forKey: key)!)
+                    }else if let textView = component as? UITextView {
+                        textView.text = String(describing: pfObject.value(forKey: key)!)
+                    }else if let imageView = component as? UIImageView {
+                        if let pfFile = pfObject.value(forKey: key) as? PFFile {
+                            imageView.kf.setImage(with: URL(string:pfFile.url))
+                        }
+                    }
+                    
                     return
                 }
             }
@@ -200,9 +206,9 @@ open class ISParseBindView: UIView {
             return
         }
         
-        let fieldsSortered = fields.sorted { (parseTextField1, parseTextField2) -> Bool in
-            if parseTextField1 is ISParseTextField && parseTextField2 is ISParseTextField {
-                return (parseTextField1 as! ISParseTextField).fieldName.components(separatedBy: ".").count < (parseTextField2 as! ISParseTextField).fieldName.components(separatedBy: ".").count
+        let fieldsSortered = fields.sorted { (parseField1, parseField2) -> Bool in
+            if parseField1 is ISParseBindPersistable && parseField2 is ISParseBindPersistable {
+                return (parseField1 as! ISParseBindPersistable).fieldPath.components(separatedBy: ".").count < (parseField2 as! ISParseBindPersistable).fieldPath.components(separatedBy: ".").count
             }else {
                 return false
             }
@@ -217,20 +223,20 @@ open class ISParseBindView: UIView {
         sortFields()
         if let fields = fields , !fields.isEmpty {
             for field in fields {
-                if let textField = field as? ISPersistable , textField is UITextField {
+                if let field = field as? ISParseBindPersistable, field is UIView {
                     
-                    if  !(textField.fieldName.characters.count > 0) {
+                    if  !(field.fieldPath.characters.count > 0) {
                         continue
                     }
                     
                     var keyPath = [String]()
                     var keyPathString = ""
-                    for (index,path) in textField.fieldName.components(separatedBy: ".").enumerated() {
+                    for (index,path) in field.fieldPath.components(separatedBy: ".").enumerated() {
                         var path = path
                         if index == 0 {
                             continue
                         }
-                        if index != textField.fieldName.components(separatedBy:".").count - 1 {
+                        if index != field.fieldPath.components(separatedBy:".").count - 1 {
                             keyPathString = path
                         }
                         keyPath.append(path)
@@ -244,14 +250,14 @@ open class ISParseBindView: UIView {
                     }
                     
                     if currentKeyPath.count == 1 {
-                        extractValueAndUpdateComponent(pfObject:self.fetchedParseObject, textField: textField as! UITextField)
+                        extractValueAndUpdateComponent(pfObject:self.fetchedParseObject, component: (field as! UIView))
                     }else {
                         
                         let filtered = nextObjectQueue.filter {($0.parseClassName == keyPathString.capitalizeFirst)}
                         if filtered.isEmpty {
-                            extractValueAndUpdateComponent(pfObject:self.fetchedParseObject, textField: textField as! UITextField)
+                            extractValueAndUpdateComponent(pfObject:self.fetchedParseObject, component: (field as! UIView))
                         }else {
-                            extractValueAndUpdateComponent(pfObject:filtered.first!, textField: textField as! UITextField)
+                            extractValueAndUpdateComponent(pfObject:filtered.first!, component: (field as! UIView))
                         }
                     }
                 }
@@ -265,46 +271,51 @@ open class ISParseBindView: UIView {
         for field in self.fields {
             var fieldPath:String!
             var fieldValue:Any!
-            var fieldType:ISParseFieldType!
+            var fieldType:ISParseBindFieldType!
             
-            if let textField = field as? ISPersistable , textField is UITextField
-                && textField.fieldName.characters.count > 0 {
+            if let textField = field as? ISParseBindPersistable , textField is UITextField
+                && textField.fieldPath.characters.count > 0 {
                 
                 if ((textField as! UITextField).text!.characters.count) > 0 {
-                    fieldValue = (textField as! UITextField).text as AnyObject!
+                    fieldValue = (textField as! UITextField).text!
                 }else {
                     fieldValue = NSNull()
                 }
                 
-                fieldType = ISParseFieldType(rawValue: textField.fieldType)
+                fieldType = ISParseBindFieldType(rawValue: textField.fieldType)
                 
                 if fieldType == nil {
                     print("fieldType \(fieldType) is not valid")
                     return
                 }
-            }else if let textView = field as? ISPersistable, textView is UITextView
-                && textView.fieldName.characters.count > 0 {
+            }else if let textView = field as? ISParseBindPersistable, textView is UITextView
+                && textView.fieldPath.characters.count > 0 {
                 if ((textView as! UITextView).text!.characters.count) > 0 {
-                    fieldValue = (textView as! UITextView).text as AnyObject!
+                    fieldValue = (textView as! UITextView).text!
                 }else {
                     fieldValue = NSNull()
                 }
                 
-                fieldType = ISParseFieldType(rawValue: textView.fieldType)
+                fieldType = ISParseBindFieldType(rawValue: textView.fieldType)
                 
                 if fieldType == nil {
                     print("fieldType \(fieldType) is not valid")
                     return
                 }
-            }else if let imageView = field as? ISPersistable {
-                
+            }else if let imageView = field as? ISParseBindPersistable, imageView is UIImageView
+                && imageView.fieldPath.characters.count > 0 {
+                if (imageView as! UIImageView).image != nil {
+                    fieldValue = (imageView as! UIImageView).image
+                }else {
+                    fieldValue = NSNull()
+                }
             }else {
                 print("Some field is not compatible, go to next...")
                 continue
             }
             
             fieldValue = self.getParseFieldValue(fieldValue: fieldValue as AnyObject, fieldType: fieldType)
-            fieldPath = (field as! ISPersistable).fieldName
+            fieldPath = (field as! ISParseBindPersistable).fieldPath
             self.fieldAndValues.append([fieldPath:fieldValue])
             
         }
@@ -317,9 +328,9 @@ open class ISParseBindView: UIView {
             self.buildFieldAndValues()
             self.buildIncludeKeys()
             
-            let parseEntityBuilder = ISParseEntityBuilder(with: self.fieldAndValues)
+            let parseEntityBuilder = ISParseBindEntityBuilder(with: self.fieldAndValues)
             
-            print(ISParseEntityBuilder.mainDictionary)
+            print(ISParseBindEntityBuilder.mainDictionary)
             
             parseEntityBuilder.extractObjectsBeforeSave(mainEntity:self.mainEntity,includeKeys:self.includeKeys)
             
