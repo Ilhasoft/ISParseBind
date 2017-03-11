@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		652E3F161E74526100C21D54 /* ISParseBindImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F151E74526100C21D54 /* ISParseBindImageView.swift */; };
+		652E3F1A1E74620C00C21D54 /* ISParseBindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */; };
 		6580E40D1E72019E00B02B86 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 6580E40B1E72019E00B02B86 /* ISParseBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4161E72ED6100B02B86 /* ISParseBindView.swift */; };
 		6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */; };
@@ -16,9 +18,12 @@
 		6580E4251E730D9500B02B86 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4231E730D9500B02B86 /* DictionaryExtension.swift */; };
 		6580E4261E730D9500B02B86 /* ISParseBindFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */; };
 		6580E4281E73110700B02B86 /* ISParseBindStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */; };
+		65FD2F3A1E744AD500AC4E00 /* ISParseBindSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		652E3F151E74526100C21D54 /* ISParseBindImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindImageView.swift; sourceTree = "<group>"; };
+		652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindLabel.swift; sourceTree = "<group>"; };
 		6580E4081E72019E00B02B86 /* ISParseBind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISParseBind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6580E40B1E72019E00B02B86 /* ISParseBind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISParseBind.h; sourceTree = "<group>"; };
 		6580E40C1E72019E00B02B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		6580E4231E730D9500B02B86 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindFieldType.swift; sourceTree = "<group>"; };
 		6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindStringExtension.swift; sourceTree = "<group>"; };
+		65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 			children = (
 				6580E41E1E730BC000B02B86 /* ISParseBindTextField.swift */,
 				6580E4201E730CC500B02B86 /* ISParseBindTextView.swift */,
+				65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */,
+				652E3F151E74526100C21D54 /* ISParseBindImageView.swift */,
+				652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -200,11 +209,14 @@
 				6580E4211E730CC500B02B86 /* ISParseBindTextView.swift in Sources */,
 				6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */,
 				6580E4281E73110700B02B86 /* ISParseBindStringExtension.swift in Sources */,
+				65FD2F3A1E744AD500AC4E00 /* ISParseBindSlider.swift in Sources */,
 				6580E41F1E730BC000B02B86 /* ISParseBindTextField.swift in Sources */,
 				6580E4261E730D9500B02B86 /* ISParseBindFieldType.swift in Sources */,
 				6580E4251E730D9500B02B86 /* DictionaryExtension.swift in Sources */,
 				6580E41C1E730B3E00B02B86 /* ISParseBindable.swift in Sources */,
 				6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */,
+				652E3F161E74526100C21D54 /* ISParseBindImageView.swift in Sources */,
+				652E3F1A1E74620C00C21D54 /* ISParseBindLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

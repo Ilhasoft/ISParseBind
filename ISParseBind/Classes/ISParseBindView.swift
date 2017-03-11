@@ -48,9 +48,13 @@ open class ISParseBindView: UIView {
     
     public var delegate:ISParseBindViewDelegate?
     
-    private func getParseFieldValue(fieldValue:AnyObject,fieldType:ISParseBindFieldType) -> Any {
+    private func getParseFieldValue(field:AnyObject,fieldValue:AnyObject,fieldType:ISParseBindFieldType) -> Any {
         
         var fieldValue = fieldValue
+        
+        if field is UISlider {
+            return fieldValue
+        }
         
         if !(fieldValue is NSNull) {
             switch fieldType {
@@ -215,6 +219,22 @@ open class ISParseBindView: UIView {
                             })
                             
                         }
+                    }else if let slider = component as? UISlider {
+                        var value = pfObject.value(forKey: key)! as! Float
+                        let persistableComponent = (slider as! ISParseBindable)
+                        if let v = persistableComponent.willFill?(value: value) {
+                            value = v as! Float
+                        }
+                        slider.value = value
+                        persistableComponent.didFill?(value: value)
+                    }else if let label = component as? UILabel {
+                        var value = String(describing: pfObject.value(forKey: key)!)
+                        let persistableComponent = (label as! ISParseBindable)
+                        if let v = persistableComponent.willFill?(value: value) {
+                            value = String(describing: v)
+                        }
+                        label.text = value
+                        persistableComponent.didFill?(value: value)
                     }
                     
                     return
@@ -337,8 +357,16 @@ open class ISParseBindView: UIView {
                     fieldValue = NSNull()
                 }
 
+            }else if let slider = field as? ISParseBindable, slider is UISlider
+                && slider.fieldPath.characters.count > 0 {
+                if (slider as! UISlider).value != -1 {
+                    fieldValue = (slider as! UISlider).value as AnyObject!
+                }else {
+                    fieldValue = NSNull()
+                }
+                
             }else {
-                print("Some field is not compatible, go to next...")
+                print("\(fieldPath) is not compatible component, go to next...")
                 continue
             }
             
@@ -346,7 +374,7 @@ open class ISParseBindView: UIView {
                 fieldValue = value as AnyObject!
             }
             
-            fieldValue = self.getParseFieldValue(fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
+            fieldValue = self.getParseFieldValue(field:field, fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
             field.didSet?(value: fieldValue)
             
             self.fieldAndValues.append([fieldPath:fieldValue])

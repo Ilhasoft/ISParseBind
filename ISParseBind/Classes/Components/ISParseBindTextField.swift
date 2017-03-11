@@ -41,18 +41,6 @@ open class ISParseBindTextField: UITextField, ISParseBindable {
             self.borderStyle = UITextBorderStyle.none
             self.layer.addSublayer(bottomLine)
         }
-    }
-    
-    public func willSet(value: Any) -> Any? {
-        if self.fieldPath == "usuario.nome" {
-            return "\(value as! String) Amaral!"
-        }
-        return value
-    }
-    
-    public func didSet(value: Any) {
-        print(value)
-    }
-    
+    }        
     
 }
