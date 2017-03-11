@@ -95,6 +95,8 @@ Learn about how to use variables of ISParseBindable protocol works.
 
 
 > Developers can use optionals ISParseBindable vars for create your own field validator.
+>
+> FieldTypeError, Required and Required Error is not used in ISParseBind algorithm. You can use as Helper for make your own validation rule.
 
 
 
@@ -102,7 +104,7 @@ Learn about how to use variables of ISParseBindable protocol works.
 
 - Sample of Input in Field Path: "vehicle.brand.car.model", will generate this class structure:
 
-  ```json
+  ```markdown
   {
       vehicle = {
           brand = {
