@@ -43,7 +43,7 @@ parseBindView.delegate = self
 
 extension yourViewController : ISParseBindViewDelegate {
   func willSave(view: ISParseBindView, object: PFObject) -> PFObject? {
-        //If you need, you can intercept the current PFObject that will be saved and change some 		   attributes before that. For example:
+        //If you need, you can intercept the current PFObject that will be saved and change some attributes before that. For example:
         //if object.parseClassName == "Car" {
         //    object["color"] = "Yellow"
         //}
@@ -116,6 +116,10 @@ Learn about how to use variables of ISParseBindable protocol works.
 
   - "model" value depends of component, for example, if component is a UITextField or UITextView the value will be a String but if component is UIImageView, the value will be UIImage that will be cast to PFFile in algorithm.
     ​
+  - In that dictionary structure above, the algorithm will generate 3 classes in Parse Server: Vehicule, Brand and Car.
+  - Ever, the last string after "." in fieldPath will be the field in Parse Server, 'model' in that case will be a field and not a class.
+
+
 
 ### Be alerted, before and after, of set or filling the value of component
 
