@@ -20,7 +20,7 @@ open class ISParseBindView: UIView {
     
     @IBOutlet open var fields:[AnyObject]!
     
-    //fieldAndValues store fieldNames fieldValues of ISParseBindPersistable fields
+    //fieldAndValues store fieldNames fieldValues of ISParseBindable fields
     private var fieldAndValues = [[String:Any]]()
     
     //currentKeyPath store fieldName keyPath separated by '.' that will be used on search that keys in PFQuery of fetchedParseObject
@@ -94,7 +94,7 @@ open class ISParseBindView: UIView {
         
         sortFields()
         for field in fields {
-            let fieldNamePath = (field as! ISParseBindPersistable).fieldPath.components(separatedBy:".")
+            let fieldNamePath = (field as! ISParseBindable).fieldPath.components(separatedBy:".")
             
             if !fieldNamePath.isEmpty {
                 mainEntity = fieldNamePath.first!
@@ -122,10 +122,10 @@ open class ISParseBindView: UIView {
         
         if !fields.isEmpty {
             
-            let filtered = fields.filter {(!($0 is ISParseBindPersistable))}
+            let filtered = fields.filter {(!($0 is ISParseBindable))}
             
             if !filtered.isEmpty {
-                print("All fields must implement ISParseBindPersistable protocol")
+                print("All fields must implement ISParseBindable protocol")
                 return
             }else {
                 buildIncludeKeys()
@@ -187,7 +187,7 @@ open class ISParseBindView: UIView {
                     
                     if let textField = component as? UITextField {
                         var value = String(describing: pfObject.value(forKey: key)!)                        
-                        let persistableComponent = (textField as! ISParseBindPersistable)
+                        let persistableComponent = (textField as! ISParseBindable)
                         if let v = persistableComponent.willFill?(value: value) {
                             value = v as! String
                         }
@@ -213,8 +213,8 @@ open class ISParseBindView: UIView {
         }
         
         let fieldsSortered = fields.sorted { (parseField1, parseField2) -> Bool in
-            if parseField1 is ISParseBindPersistable && parseField2 is ISParseBindPersistable {
-                return (parseField1 as! ISParseBindPersistable).fieldPath.components(separatedBy: ".").count < (parseField2 as! ISParseBindPersistable).fieldPath.components(separatedBy: ".").count
+            if parseField1 is ISParseBindable && parseField2 is ISParseBindable {
+                return (parseField1 as! ISParseBindable).fieldPath.components(separatedBy: ".").count < (parseField2 as! ISParseBindable).fieldPath.components(separatedBy: ".").count
             }else {
                 return false
             }
@@ -229,7 +229,7 @@ open class ISParseBindView: UIView {
         sortFields()
         if let fields = fields , !fields.isEmpty {
             for field in fields {
-                if let field = field as? ISParseBindPersistable, field is UIView {
+                if let field = field as? ISParseBindable, field is UIView {
                     
                     if  !(field.fieldPath.characters.count > 0) {
                         continue
@@ -276,9 +276,15 @@ open class ISParseBindView: UIView {
         
         for field in self.fields {
             
-            var fieldPath = (field as! ISParseBindPersistable).fieldPath
-            var fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindPersistable).fieldType)
+            var fieldPath = (field as! ISParseBindable).fieldPath
+            var fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType)
+            var isPersist = (field as! ISParseBindable).persist
+            
             var fieldValue:AnyObject!
+            
+            guard isPersist == true else {
+                continue
+            }
             
             guard fieldPath != nil else {
                 print("fieldPath is nil")
@@ -290,7 +296,7 @@ open class ISParseBindView: UIView {
                 continue
             }
             
-            if let textField = field as? ISParseBindPersistable , textField is UITextField
+            if let textField = field as? ISParseBindable , textField is UITextField
                 && textField.fieldPath.characters.count > 0 {
                 
                 if ((textField as! UITextField).text!.characters.count) > 0 {
@@ -299,7 +305,7 @@ open class ISParseBindView: UIView {
                     fieldValue = "" as! AnyObject
                 }
                 
-            }else if let textView = field as? ISParseBindPersistable, textView is UITextView
+            }else if let textView = field as? ISParseBindable, textView is UITextView
                 && textView.fieldPath.characters.count > 0 {
                 if ((textView as! UITextView).text!.characters.count) > 0 {
                     fieldValue = (textView as! UITextView).text! as AnyObject!
@@ -313,7 +319,7 @@ open class ISParseBindView: UIView {
                     print("fieldType \(fieldType) is not valid")
                     return
                 }
-            }else if let imageView = field as? ISParseBindPersistable, imageView is UIImageView
+            }else if let imageView = field as? ISParseBindable, imageView is UIImageView
                 && imageView.fieldPath.characters.count > 0 {
                 if (imageView as! UIImageView).image != nil {
                     fieldValue = (imageView as! UIImageView).image
@@ -338,6 +344,11 @@ open class ISParseBindView: UIView {
             
             self.buildFieldAndValues()
             self.buildIncludeKeys()
+            
+            guard !self.fieldAndValues.isEmpty else {
+                print("There is no persist fields for save")
+                return
+            }
             
             let parseEntityBuilder = ISParseBindEntityBuilder(with: self.fieldAndValues)
             

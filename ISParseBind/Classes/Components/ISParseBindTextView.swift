@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class ISParseBindTextView: UITextView, ISParseBindPersistable {
+open class ISParseBindTextView: UITextView, ISParseBindable {
 
     public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -27,6 +27,7 @@ open class ISParseBindTextView: UITextView, ISParseBindPersistable {
     @IBInspectable open var fieldType: String = ""
     @IBInspectable open var fieldTypeError: String = ""
     @IBInspectable open var fieldPath: String = ""
+    @IBInspectable open var persist: Bool = true
     
     func setupLayoutWithUnderline(color:UIColor) {
         if color == UIColor.clear {
@@ -40,11 +41,4 @@ open class ISParseBindTextView: UITextView, ISParseBindPersistable {
         }
     }
     
-    public func willSetValue(value: Any) -> Any? {
-        return value
-    }
-    
-    public func didSetValue(value: Any) {
-        
-    }
 }

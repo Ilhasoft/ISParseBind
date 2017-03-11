@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class ISParseBindTextField: UITextField, ISParseBindPersistable {
+open class ISParseBindTextField: UITextField, ISParseBindable {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +29,7 @@ open class ISParseBindTextField: UITextField, ISParseBindPersistable {
     @IBInspectable open var fieldType: String = ""
     @IBInspectable open var fieldTypeError: String = ""
     @IBInspectable open var fieldPath: String = ""
+    @IBInspectable open var persist: Bool = true
 
     func setupLayoutWithUnderline(color:UIColor) {
         if color == UIColor.clear {
