@@ -43,11 +43,15 @@ open class ISParseBindTextField: UITextField, ISParseBindable {
         }
     }
     
-    public func willFill(value: Any) -> Any? {
-        if self.fieldPath == "usuario.nascimento" {
-            return "\(value as! String) Nasceu!"
+    public func willSet(value: Any) -> Any? {
+        if self.fieldPath == "usuario.nome" {
+            return "\(value as! String) Amaral!"
         }
         return value
+    }
+    
+    public func didSet(value: Any) {
+        print(value)
     }
     
     

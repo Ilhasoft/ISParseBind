@@ -60,7 +60,6 @@ open class ISParseBindView: UIView {
                 }
                 fieldValue = fieldValue.doubleValue as AnyObject
                 return fieldValue
-                break
             case .Logic:
                 print("fieldValue = .Logic\(fieldValue)")
                 break
@@ -71,10 +70,9 @@ open class ISParseBindView: UIView {
                     print("FieldType Image but the value is not a Image")
                 }
                 return fieldValue
-                break
             default:
                 return fieldValue
-                break
+
             }
         }
         return NSNull()
@@ -143,8 +141,8 @@ open class ISParseBindView: UIView {
             
             query.getObjectInBackground(withId: data.objectId!, block: { (pObject, error) in
                 
-                if error != nil {
-                    print(error)
+                if let error = error {
+                    print(error.localizedDescription)
                     return
                 }
                 
@@ -194,10 +192,28 @@ open class ISParseBindView: UIView {
                         textField.text = value
                         persistableComponent.didFill?(value: value)
                     }else if let textView = component as? UITextView {
-                        textView.text = String(describing: pfObject.value(forKey: key)!)
+                        var value = String(describing: pfObject.value(forKey: key)!)
+                        let persistableComponent = (textView as! ISParseBindable)
+                        if let v = persistableComponent.willFill?(value: value) {
+                            value = v as! String
+                        }
+                        textView.text = value
+                        persistableComponent.didFill?(value: value)
                     }else if let imageView = component as? UIImageView {
-                        if let pfFile = pfObject.value(forKey: key) as? PFFile {
-                            imageView.kf.setImage(with: URL(string:pfFile.url!))
+                        if var value = pfObject.value(forKey: key) as? PFFile {
+//                            imageView.kf.setImage(with: URL(string:pfFile.url!))
+                            let persistableComponent = (imageView as! ISParseBindable)
+                            if let v = persistableComponent.willFill?(value: value) {
+                                value = v as! PFFile
+                            }
+                            
+                            imageView.kf.setImage(with: URL(string:value.url!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cache, url) in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                }
+                                persistableComponent.didFill?(value: value)
+                            })
+                            
                         }
                     }
                     
@@ -238,7 +254,7 @@ open class ISParseBindView: UIView {
                     var keyPath = [String]()
                     var keyPathString = ""
                     for (index,path) in field.fieldPath.components(separatedBy: ".").enumerated() {
-                        var path = path
+                        let path = path
                         if index == 0 {
                             continue
                         }
@@ -276,9 +292,9 @@ open class ISParseBindView: UIView {
         
         for field in self.fields {
             
-            var fieldPath = (field as! ISParseBindable).fieldPath
-            var fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType)
-            var isPersist = (field as! ISParseBindable).persist
+            let fieldPath = (field as! ISParseBindable).fieldPath
+            let fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType)
+            let isPersist = (field as! ISParseBindable).persist
             
             var fieldValue:AnyObject!
             
@@ -286,7 +302,7 @@ open class ISParseBindView: UIView {
                 continue
             }
             
-            guard fieldPath != nil else {
+            guard fieldPath.characters.count > 0 else {
                 print("fieldPath is nil")
                 continue
             }
@@ -302,7 +318,7 @@ open class ISParseBindView: UIView {
                 if ((textField as! UITextField).text!.characters.count) > 0 {
                     fieldValue = (textField as! UITextField).text! as AnyObject!
                 }else {
-                    fieldValue = "" as! AnyObject
+                    fieldValue = "" as AnyObject
                 }
                 
             }else if let textView = field as? ISParseBindable, textView is UITextView
@@ -310,15 +326,9 @@ open class ISParseBindView: UIView {
                 if ((textView as! UITextView).text!.characters.count) > 0 {
                     fieldValue = (textView as! UITextView).text! as AnyObject!
                 }else {
-                    fieldValue = "" as! AnyObject
+                    fieldValue = "" as AnyObject
                 }
                 
-                fieldType = ISParseBindFieldType(rawValue: textView.fieldType)
-                
-                if fieldType == nil {
-                    print("fieldType \(fieldType) is not valid")
-                    return
-                }
             }else if let imageView = field as? ISParseBindable, imageView is UIImageView
                 && imageView.fieldPath.characters.count > 0 {
                 if (imageView as! UIImageView).image != nil {
@@ -326,12 +336,18 @@ open class ISParseBindView: UIView {
                 }else {
                     fieldValue = NSNull()
                 }
+
             }else {
                 print("Some field is not compatible, go to next...")
                 continue
             }
             
+            if let value = field.willSet?(value: fieldValue) {
+                fieldValue = value as AnyObject!
+            }
+            
             fieldValue = self.getParseFieldValue(fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
+            field.didSet?(value: fieldValue)
             
             self.fieldAndValues.append([fieldPath:fieldValue])
             
@@ -358,10 +374,10 @@ open class ISParseBindView: UIView {
             
             var lastError:Error?
             var index = 0
-            var total = parseEntityBuilder.dictionaryObjectsList.count
+            let total = parseEntityBuilder.dictionaryObjectsList.count
             var isLastObjectSave = false
             
-            for dictionary in parseEntityBuilder.dictionaryObjectsList as! [[String:Any]] {
+            for dictionary in parseEntityBuilder.dictionaryObjectsList {
                 
                 let keyPath = dictionary.keys.first!
                 let keyPathArray = keyPath.components(separatedBy: ".")
