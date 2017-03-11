@@ -193,8 +193,6 @@ class ISParseBindEntityBuilder: NSObject {
                 }
             }else {
                 let value = ISParseBindEntityBuilder.mainDictionary.value(forKeyPath: keyPath)
-                print(keyPath)
-                print(value)
             }
         }
         
@@ -203,9 +201,6 @@ class ISParseBindEntityBuilder: NSObject {
         }
         
         dictionaryObjectsList = keyPathSortered
-        
-        for keyAndObject in dictionaryObjectsList {
-            print(keyAndObject)
-        }
+
     }        
 }
