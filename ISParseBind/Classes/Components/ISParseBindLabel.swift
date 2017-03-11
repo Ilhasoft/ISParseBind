@@ -18,11 +18,11 @@ open class ISParseBindLabel: UILabel, ISParseBindable {
         super.init(coder: aDecoder)
     }
     
-    @IBInspectable open var required: Bool = false
-    @IBInspectable open var requiredError: String = ""
-    @IBInspectable open var fieldType: String = ""
-    @IBInspectable open var fieldTypeError: String = ""
+    var required: Bool = false
+    var requiredError: String = ""
+    var fieldType: String = "Text"
+    var fieldTypeError: String = ""
     @IBInspectable open var fieldPath: String = ""
-    open var persist: Bool = false
+    var persist: Bool = false
 
 }
