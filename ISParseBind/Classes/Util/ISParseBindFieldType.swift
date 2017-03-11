@@ -13,5 +13,4 @@ public enum ISParseBindFieldType: String {
     case Number = "Number"
     case Logic = "Logic"
     case Image = "Image"
-    case File = "File"
 }
