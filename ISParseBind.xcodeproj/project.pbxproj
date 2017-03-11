@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04049386C4B54EFE18F5A88B /* Pods_ISParseBind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */; };
 		652E3F161E74526100C21D54 /* ISParseBindImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F151E74526100C21D54 /* ISParseBindImageView.swift */; };
 		652E3F1A1E74620C00C21D54 /* ISParseBindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */; };
-		6580E40D1E72019E00B02B86 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 6580E40B1E72019E00B02B86 /* ISParseBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		652E3F241E748F8F00C21D54 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 652E3F231E748F8F00C21D54 /* ISParseBind.h */; };
 		6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4161E72ED6100B02B86 /* ISParseBindView.swift */; };
 		6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */; };
 		6580E41C1E730B3E00B02B86 /* ISParseBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E41B1E730B3E00B02B86 /* ISParseBindable.swift */; };
@@ -22,10 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02E82010C47883D8F1205077 /* Pods-ISParseBind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBind.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind.debug.xcconfig"; sourceTree = "<group>"; };
+		1FA9F4137FE43DB5DC8A3F09 /* Pods-ISParseBind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBind.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind.release.xcconfig"; sourceTree = "<group>"; };
 		652E3F151E74526100C21D54 /* ISParseBindImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindImageView.swift; sourceTree = "<group>"; };
 		652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindLabel.swift; sourceTree = "<group>"; };
+		652E3F231E748F8F00C21D54 /* ISParseBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISParseBind.h; sourceTree = "<group>"; };
 		6580E4081E72019E00B02B86 /* ISParseBind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISParseBind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6580E40B1E72019E00B02B86 /* ISParseBind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISParseBind.h; sourceTree = "<group>"; };
 		6580E40C1E72019E00B02B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6580E4161E72ED6100B02B86 /* ISParseBindView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindView.swift; sourceTree = "<group>"; };
 		6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindEntityBuilder.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		6580E4241E730D9500B02B86 /* ISParseBindFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindFieldType.swift; sourceTree = "<group>"; };
 		6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindStringExtension.swift; sourceTree = "<group>"; };
 		65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindSlider.swift; sourceTree = "<group>"; };
+		683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISParseBind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04049386C4B54EFE18F5A88B /* Pods_ISParseBind.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,8 @@
 			children = (
 				6580E40A1E72019E00B02B86 /* ISParseBind */,
 				6580E4091E72019E00B02B86 /* Products */,
+				88B89B8CCB9C8A93B473E50B /* Pods */,
+				FC27C6899DBB6EEBEAA7E9B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,7 +77,6 @@
 			children = (
 				6580E4141E7201B700B02B86 /* Resources */,
 				6580E4131E7201AA00B02B86 /* Classes */,
-				6580E40B1E72019E00B02B86 /* ISParseBind.h */,
 				6580E40C1E72019E00B02B86 /* Info.plist */,
 			);
 			path = ISParseBind;
@@ -79,6 +85,7 @@
 		6580E4131E7201AA00B02B86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				652E3F231E748F8F00C21D54 /* ISParseBind.h */,
 				6580E4221E730D8400B02B86 /* Util */,
 				6580E41D1E730BAD00B02B86 /* Components */,
 				6580E41A1E730B3700B02B86 /* Protocols */,
@@ -125,6 +132,23 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		88B89B8CCB9C8A93B473E50B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02E82010C47883D8F1205077 /* Pods-ISParseBind.debug.xcconfig */,
+				1FA9F4137FE43DB5DC8A3F09 /* Pods-ISParseBind.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC27C6899DBB6EEBEAA7E9B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -132,7 +156,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6580E40D1E72019E00B02B86 /* ISParseBind.h in Headers */,
+				652E3F241E748F8F00C21D54 /* ISParseBind.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,10 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6580E4101E72019E00B02B86 /* Build configuration list for PBXNativeTarget "ISParseBind" */;
 			buildPhases = (
+				0EC8FC547A6838F1D7EFA445 /* [CP] Check Pods Manifest.lock */,
 				6580E4031E72019E00B02B86 /* Sources */,
 				6580E4041E72019E00B02B86 /* Frameworks */,
 				6580E4051E72019E00B02B86 /* Headers */,
 				6580E4061E72019E00B02B86 /* Resources */,
+				B2E47777B8A7D580271C3115 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,6 +227,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EC8FC547A6838F1D7EFA445 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B2E47777B8A7D580271C3115 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6580E4031E72019E00B02B86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -280,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -324,6 +385,7 @@
 		};
 		6580E4111E72019E00B02B86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E82010C47883D8F1205077 /* Pods-ISParseBind.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -345,6 +407,7 @@
 		};
 		6580E4121E72019E00B02B86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA9F4137FE43DB5DC8A3F09 /* Pods-ISParseBind.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";

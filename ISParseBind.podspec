@@ -15,9 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Ilhasoft/ISParseBind.git", :branch => "master" }
   s.source_files  = "Classes", "ISParseBind/Classes/**/*"
   #s.exclude_files = "Classes/Exclude"
-
-  # s.public_header_files = "Classes/**/*.h"
- 
+  #s.public_header_files = 'Pod/Classes/**/*.h'
   s.dependency "Parse"
   s.dependency "Kingfisher"
 

@@ -1,0 +1,18 @@
+PODS:
+  - Bolts/Tasks (1.8.4)
+  - Kingfisher (3.5.2)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
+
+DEPENDENCIES:
+  - Kingfisher
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Kingfisher: 9950e382c500b6834ce004c7c4131c444e90c3a1
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
+
+PODFILE CHECKSUM: 5016fb1510aa46e161f608fdee3c1b4ec70b1814
+
+COCOAPODS: 1.1.1

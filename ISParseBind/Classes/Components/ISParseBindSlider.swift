@@ -23,5 +23,5 @@ open class ISParseBindSlider: UISlider, ISParseBindable {
     @IBInspectable open var fieldType: String = ""
     @IBInspectable open var fieldTypeError: String = ""
     @IBInspectable open var fieldPath: String = ""
-    @IBInspectable open var persist: Bool = false
+    @IBInspectable open var persist: Bool = true
 }
