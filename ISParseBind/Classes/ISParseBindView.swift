@@ -345,11 +345,7 @@ open class ISParseBindView: UIView {
             let isPersist = (field as! ISParseBindable).persist
             
             var fieldValue:AnyObject!
-            
-            guard isPersist == true else {
-                continue
-            }
-            
+
             guard fieldPath.characters.count > 0 else {
                 print("fieldPath is nil")
                 continue
@@ -400,6 +396,10 @@ open class ISParseBindView: UIView {
             
             if let value = field.willSet?(value: fieldValue) {
                 fieldValue = value as AnyObject!
+            }
+            
+            guard (field as! ISParseBindable).persist == true else {
+                continue
             }
             
             fieldValue = self.getParseFieldValue(field:field, fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
