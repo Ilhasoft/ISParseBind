@@ -190,25 +190,41 @@ open class ISParseBindView: UIView {
                     if let textField = component as? UITextField {
                         var value = String(describing: pfObject.value(forKey: key)!)                        
                         let persistableComponent = (textField as! ISParseBindable)
-                        if let v = persistableComponent.willFill?(value: value) {
-                            value = v as! String
+                        
+                        if persistableComponent.willFill != nil {
+                            if let newValue = persistableComponent.willFill!(value: value) {
+                                value = newValue as! String
+                            }else {
+                                return
+                            }
                         }
+                        
                         textField.text = value
                         persistableComponent.didFill?(value: value)
                     }else if let textView = component as? UITextView {
                         var value = String(describing: pfObject.value(forKey: key)!)
                         let persistableComponent = (textView as! ISParseBindable)
-                        if let v = persistableComponent.willFill?(value: value) {
-                            value = v as! String
+                        
+                        if persistableComponent.willFill != nil {
+                            if let newValue = persistableComponent.willFill!(value: value) {
+                                value = newValue as! String
+                            }else {
+                                return
+                            }
                         }
+
                         textView.text = value
                         persistableComponent.didFill?(value: value)
                     }else if let imageView = component as? UIImageView {
                         if var value = pfObject.value(forKey: key) as? PFFile {
-//                            imageView.kf.setImage(with: URL(string:pfFile.url!))
                             let persistableComponent = (imageView as! ISParseBindable)
-                            if let v = persistableComponent.willFill?(value: value) {
-                                value = v as! PFFile
+                            
+                            if persistableComponent.willFill != nil {
+                                if let newValue = persistableComponent.willFill!(value: value) {
+                                    value = newValue as! PFFile
+                                }else {
+                                    return
+                                }
                             }
                             
                             imageView.kf.setImage(with: URL(string:value.url!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cache, url) in
@@ -222,17 +238,29 @@ open class ISParseBindView: UIView {
                     }else if let slider = component as? UISlider {
                         var value = pfObject.value(forKey: key)! as! Float
                         let persistableComponent = (slider as! ISParseBindable)
-                        if let v = persistableComponent.willFill?(value: value) {
-                            value = v as! Float
+                        
+                        if persistableComponent.willFill != nil {
+                            if let newValue = persistableComponent.willFill!(value: value) {
+                                value = newValue as! Float
+                            }else {
+                                return
+                            }
                         }
+                        
                         slider.value = value
                         persistableComponent.didFill?(value: value)
                     }else if let label = component as? UILabel {
                         var value = String(describing: pfObject.value(forKey: key)!)
                         let persistableComponent = (label as! ISParseBindable)
-                        if let v = persistableComponent.willFill?(value: value) {
-                            value = String(describing: v)
+                        
+                        if persistableComponent.willFill != nil {
+                            if let newValue = persistableComponent.willFill!(value: value) {
+                                value = newValue as! String
+                            }else {
+                                return
+                            }
                         }
+                        
                         label.text = value
                         persistableComponent.didFill?(value: value)
                     }
