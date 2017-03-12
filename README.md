@@ -86,7 +86,7 @@ Learn about how to use variables of ISParseBindable protocol works.
 | Variable         | Type                                     | Description                              |
 | ---------------- | ---------------------------------------- | ---------------------------------------- |
 | Required         | Bool (optional)                          | Fill component is mandatory              |
-| Required Error   | String (optional)                        | Error message is component is not filled |
+| Required Error   | String (optional)                        | Error message if component is not filled |
 | Field Type       | String: 'Text', 'Number', 'Logic' or 'Image' | This is necessary for the algorithm to cast correctly for the corresponding field type in Parse. |
 | Filed Type Error | String (optional)                        | Cast error message                       |
 | Field Path       | String                                   | Path of the field on your class structure, for example: 'vehicle.brand.car.model'. Vehicule will be your main entity, 'Brand' and 'Car' will be relations class that will be created automatically, and 'model' will be the field of 'Car' Class. |
@@ -117,7 +117,6 @@ Learn about how to use variables of ISParseBindable protocol works.
   ```
 
   - "model" value depends of component, for example, if component is a UITextField or UITextView the value will be a String but if component is UIImageView, the value will be UIImage that will be cast to PFFile in algorithm.
-    ​
   - In that dictionary structure above, the algorithm will generate 3 classes in Parse Server: Vehicule, Brand and Car.
   - Always, the last string after "." in fieldPath will be the field in Parse Server, 'model' in that case will be a field and not a class.
 
@@ -129,18 +128,22 @@ Learn about how to use variables of ISParseBindable protocol works.
 
   - ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
 
-  - Or you can create your own component that implement ISParseBindable and  support native components of section Supported Components, and implement these functions:
+  - Or you can create your own component that implement ISParseBindable and support native components of section 'Supported Components', and implement these functions:
 
     ```swift
-        @objc optional func willSet(value:Any) -> Any?
-        @objc optional func didSet(value:Any)
-        @objc optional func willFill(value:Any) -> Any?
-        @objc optional func didFill(value:Any)
+    func willSet(value:Any) -> Any?
+    func didSet(value:Any)
+    func willFill(value:Any) -> Any?
+    func didFill(value:Any)
     ```
 
     > willFill can be used for "string format" for example before fill the field.
     >
     > willSet can be used for remove the string formatation before save in Parse. 
+    >
+    > You can ignore willFill returning "nil" on willFill implementation method
+    >
+    > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
 
 
 
