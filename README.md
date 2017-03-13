@@ -34,6 +34,20 @@ With ISParseBind you can save, update, and query PFObjects using the power of Xc
 
 ### How it works in practice? Code Step
 
+Setup Parse Server credentials in AppDelegate, on "didFinishLaunchingWithOptions" method:
+
+```swift
+        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
+            ParseMutableClientConfiguration.applicationId = "applicatioID"
+            ParseMutableClientConfiguration.clientKey = "clientKey"
+            ParseMutableClientConfiguration.server = "serverURL"
+        })
+        
+        Parse.initialize(with: parseConfiguration)
+```
+
+In some UIViewController, do:
+
 ```swift
 1: import ISParseBind
 ```
@@ -148,4 +162,3 @@ Learn about how to use variables of ISParseBindable protocol works.
     > You can ignore willFill returning "nil" on willFill implementation method
     >
     > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
-
