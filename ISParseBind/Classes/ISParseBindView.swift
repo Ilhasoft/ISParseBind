@@ -12,8 +12,7 @@ import Kingfisher
 
 public protocol ISParseBindViewDelegate {
     func willSave(view:ISParseBindView,object:PFObject) -> PFObject?
-    func didSave(view:ISParseBindView,object:PFObject,error:Error?)
-    func allEntitiesDidSave(view:ISParseBindView,mainEntity:PFObject,error:Error?)
+    func didSave(view:ISParseBindView,object:PFObject,isMainEntity:Bool,error:Error?)
 }
 
 open class ISParseBindView: UIView {
@@ -342,7 +341,6 @@ open class ISParseBindView: UIView {
             
             let fieldPath = (field as! ISParseBindable).fieldPath
             let fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType)
-            let isPersist = (field as! ISParseBindable).persist
             
             var fieldValue:AnyObject!
 
@@ -490,16 +488,16 @@ open class ISParseBindView: UIView {
                     
                     try object.save()
                     if isLastObjectSave == true {
-                        self.delegate?.allEntitiesDidSave(view: self, mainEntity: object, error: lastError)
+                        self.delegate?.didSave(view: self, object: object, isMainEntity: isLastObjectSave, error: lastError)
                         self.lastSavedObjectList = []
                     }else {
-                        self.delegate?.didSave(view: self, object: object, error: nil)
+                        self.delegate?.didSave(view: self, object: object, isMainEntity:false ,error: nil)
                         self.lastSavedObjectList.append([keyPath:object])
                     }
                     
                 } catch {
                     lastError = error
-                    self.delegate?.didSave(view: self, object: object, error: error)
+                    self.delegate?.didSave(view: self, object: object, isMainEntity:false ,error: error)
                 }
                 
                 index = index + 1
