@@ -390,7 +390,6 @@ open class ISParseBindView: UIView {
                 }
                 
             }else {
-                print("\(fieldPath) is not compatible component, go to next...")
                 continue
             }
             

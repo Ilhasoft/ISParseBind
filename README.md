@@ -2,6 +2,10 @@
 
 With ISParseBind you can save, update, and query PFObjects using the power of Xcode Interface Builder resources.
 
+![ISParseBind Video](https://img.youtube.com/vi/WCZRNC_mHNQ/0.jpg)
+
+​						https://www.youtube.com/watch?v=WCZRNC_mHNQ
+
 ### Supported Components:
 - UITextField
 - TextView
@@ -144,12 +148,4 @@ Learn about how to use variables of ISParseBindable protocol works.
     > You can ignore willFill returning "nil" on willFill implementation method
     >
     > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
-
-
-
-### GIF Sample
-
-- Comming soon.
-
-
 
