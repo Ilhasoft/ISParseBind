@@ -68,7 +68,7 @@ extension yourViewController : ISParseBindViewDelegate {
         return object
     }
     
-        func didSave(view: ISParseBindView, object: PFObject, isMainEntity:Bool, error: Error?) {
+  func didSave(view: ISParseBindView, object: PFObject, isMainEntity:Bool, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
             DispatchQueue.main.async {
