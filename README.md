@@ -1,12 +1,13 @@
-# ISParseBind
+ISParseBind
 
 With ISParseBind you can save, update, and query PFObjects using the power of Xcode Interface Builder resources.
 
-![ISParseBind Video](https://img.youtube.com/vi/WCZRNC_mHNQ/0.jpg)
 
-​						https://www.youtube.com/watch?v=WCZRNC_mHNQ
 
-### Supported Components:
+						https://www.youtube.com/watch?v=WCZRNC_mHNQ
+
+Supported Components:
+
 - UITextField
 - TextView
 - UIImageView
@@ -14,151 +15,129 @@ With ISParseBind you can save, update, and query PFObjects using the power of Xc
 - UILabel (Read Only)
 - UIButton (Comming soon for Radio Button)
 
-### Custom Components:
+Custom Components:
+
 - You can implement ISParseBindable protocol for create your own component.
 - Custom components need subclass Supported Components and implement ISParseBindable
 
-### Requirements:
+Requirements:
+
 - iOS 9 +
 - Swift 3
 
-### Install with Cocoapods:
+Install with Cocoapods:
+
 - pod 'ISParseBind', :git => 'https://github.com/ilhasoft/ISParseBind.git', :branch => 'master'
 
-### How it works? Interface Builder Step
+How it works? Interface Builder Step
+
 - Add UIView in your xib/story board and set that as ISParseBindView subclass.
 - Add some components that implement ISParseBindable in that ISParseBindView.
 - On Attributes Inspector, fill: FieldType, FieldPath and Persist, the others aren't required.
 - After setup the components, you need right click on your ISParseBindView and bind it with ISParseBindable components.
 - Create an @IBoutlet for bind your ISParseBindView.
 
-### How it works in practice? Code Step
+How it works in practice? Code Step
 
 Setup Parse Server credentials in AppDelegate, on "didFinishLaunchingWithOptions" method:
 
-```swift
-        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = "applicatioID"
-            ParseMutableClientConfiguration.clientKey = "clientKey"
-            ParseMutableClientConfiguration.server = "serverURL"
-        })
-        
-        Parse.initialize(with: parseConfiguration)
-```
+            let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
+                ParseMutableClientConfiguration.applicationId = "applicatioID"
+                ParseMutableClientConfiguration.clientKey = "clientKey"
+                ParseMutableClientConfiguration.server = "serverURL"
+            })
+            
+            Parse.initialize(with: parseConfiguration)
 
 In some UIViewController, do:
 
-```swift
-1: import ISParseBind
-```
-```swift
-2: @IBOutlet var parseBindView:ISParseBindView!
-```
-```swift
-3: Implement ISParseBindViewDelegate
+    1: import ISParseBind
 
-parseBindView.delegate = self
+    2: @IBOutlet var parseBindView:ISParseBindView!
 
-extension yourViewController : ISParseBindViewDelegate {
-  func willSave(view: ISParseBindView, object: PFObject) -> PFObject? {
-        //If you need, you can intercept the current PFObject that will be saved and change some attributes before that. For example:
-        //if object.parseClassName == "Car" {
-        //    object["color"] = "Yellow"
-        //}
-        return object
-    }
+    3: Implement ISParseBindViewDelegate
     
-    func didSave(view: ISParseBindView, object: PFObject, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-        	DispatchQueue.main.async {
-            	MBProgressHUD.hide(for: self.view, animated: true)
-        	}
-        }else {
-            print("didSave \(object.parseClassName)")
-        }
-    }
+    parseBindView.delegate = self
     
-    func allEntitiesDidSave(view: ISParseBindView, mainEntity: PFObject, error: Error?) {
-        DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
+    extension yourViewController : ISParseBindViewDelegate {
+      func willSave(view: ISParseBindView, object: PFObject) -> PFObject? {
+            //If you need, you can intercept the current PFObject that will be saved and change some attributes before that. For example:
+            //if object.parseClassName == "Car" {
+            //    object["color"] = "Yellow"
+            //}
+            return object
         }
-        self.parseBindView.parseObject = mainEntity // If you put this line, ISParseBind will update all objects in next save() call        
-        if let error = error {
-            print(error.localizedDescription)
-        }else {
-            print("allEntitiesDidSave")
-        }
+        
+            func didSave(view: ISParseBindView, object: PFObject, isMainEntity:Bool, error: Error?) {
+            if let error = error {
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.hud?.hide(animated: true)
+                }
+            }else {
+                if isMainEntity == true {
+                    self.parseBindView.parseObject = object
+                    DispatchQueue.main.async {
+                        self.hud?.label.text = "Main Entity did save \(object.parseClassName)"
+                        self.hud?.hide(animated: true, afterDelay: 2)
+                    }
+                }else {
+                    DispatchQueue.main.async {
+                        self.hud!.label.text = "Saving \(object.parseClassName)"
+                    }
+                }
+            }
+        }        
     }
-}
-```
-```swift
-4: self.parseBindView.save()
-```
 
+    4: self.parseBindView.save()
 
-### ISParseBindable vars
+ISParseBindable vars
 
 Learn about how to use variables of ISParseBindable protocol works.
 
-| Variable         | Type                                     | Description                              |
-| ---------------- | ---------------------------------------- | ---------------------------------------- |
-| Required         | Bool (optional)                          | Fill component is mandatory              |
-| Required Error   | String (optional)                        | Error message if component is not filled |
-| Field Type       | String: 'Text', 'Number', 'Logic' or 'Image' | This is necessary for the algorithm to cast correctly for the corresponding field type in Parse. |
-| Filed Type Error | String (optional)                        | Cast error message                       |
-| Field Path       | String                                   | Path of the field on your class structure, for example: 'vehicle.brand.car.model'. Vehicule will be your main entity, 'Brand' and 'Car' will be relations class that will be created automatically, and 'model' will be the field of 'Car' Class. |
-| Persist          | Bool                                     | If persist = false then this field will only use "read only" mode. |
+  Variable        	Type                                    	Description                             
+  Required        	Bool (optional)                         	Fill component is mandatory             
+  Required Error  	String (optional)                       	Error message if component is not filled
+  Field Type      	String: 'Text', 'Number', 'Logic' or 'Image'	This is necessary for the algorithm to cast correctly for the corresponding field type in Parse.
+  Filed Type Error	String (optional)                       	Cast error message                      
+  Field Path      	String                                  	Path of the field on your class structure, for example: 'vehicle.brand.car.model'. Vehicule will be your main entity, 'Brand' and 'Car' will be relations class that will be created automatically, and 'model' will be the field of 'Car' Class.
+  Persist         	Bool                                    	If persist = false then this field will only use "read only" mode.
 
 
 
-> Developers can use optionals ISParseBindable vars for create your own field validator.
->
-> FieldTypeError, Required and Required Error is not used in ISParseBind algorithm. You can use as Helper for make your own validation rule.
+Developers can use optionals ISParseBindable vars for create your own field validator.
+
+FieldTypeError, Required and Required Error is not used in ISParseBind algorithm. You can use as Helper for make your own validation rule.
 
 
 
-### Class Structure 
+Class Structure
 
 - Sample of Input in Field Path: "vehicle.brand.car.model", will generate this class structure:
-
-  ```markdown
-  {
-      vehicle = {
-          brand = {
-           	 car = {
-              	model: 
-            	 }
+      {
+          vehicle = {
+              brand = {
+               	 car = {
+                  	model: 
+                	 }
+              }
           }
       }
-  }
-  ```
-
   - "model" value depends of component, for example, if component is a UITextField or UITextView the value will be a String but if component is UIImageView, the value will be UIImage that will be cast to PFFile in algorithm.
   - In that dictionary structure above, the algorithm will generate 3 classes in Parse Server: Vehicule, Brand and Car.
   - Always, the last string after "." in fieldPath will be the field in Parse Server, 'model' in that case will be a field and not a class.
 
-
-
-### Be alerted, before and after, of set or filling the value of component
+Be alerted, before and after, of set or filling the value of component
 
 - For that you need implement some ISParseBind Component, like:
-
   - ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
-
   - Or you can create your own component that implement ISParseBindable and support native components of section 'Supported Components', and implement these functions:
-
-    ```swift
-    func willSet(value:Any) -> Any?
-    func didSet(value:Any)
-    func willFill(value:Any) -> Any?
-    func didFill(value:Any)
-    ```
-
-    > willFill can be used for "string format" for example before fill the field.
-    >
-    > willSet can be used for remove the string formatation before save in Parse. 
-    >
-    > You can ignore willFill returning "nil" on willFill implementation method
-    >
-    > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
+        func willSet(value:Any) -> Any?
+        func didSet(value:Any)
+        func willFill(value:Any) -> Any?
+        func didFill(value:Any)
+    willFill can be used for "string format" for example before fill the field.
+    willSet can be used for remove the string formatation before save in Parse. 
+    You can ignore willFill returning "nil" on willFill implementation method
+    You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
