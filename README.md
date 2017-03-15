@@ -1,6 +1,6 @@
 # ISParseBind
 
-With ISParseBind you can save, update, and query PFObjects using the power of Xcode Interface Builder resources.
+With ISParseBind you can save, update and query PFObjects using the power of Xcode Interface Builder resources.
 
 ![ISParseBind Video](https://img.youtube.com/vi/WCZRNC_mHNQ/0.jpg)
 
@@ -15,8 +15,8 @@ With ISParseBind you can save, update, and query PFObjects using the power of Xc
 - UIButton (Comming soon for Radio Button)
 
 ### Custom Components:
-- You can implement ISParseBindable protocol for create your own component.
-- Custom components need subclass Supported Components and implement ISParseBindable
+- You can implement ISParseBindable protocol to create your own component.
+- All custom components need to subclass one of the supported components and to implement ISParseBindable
 
 ### Requirements:
 - iOS 9 +
@@ -25,25 +25,25 @@ With ISParseBind you can save, update, and query PFObjects using the power of Xc
 ### Install with Cocoapods:
 - pod 'ISParseBind', :git => 'https://github.com/ilhasoft/ISParseBind.git', :branch => 'master'
 
-### How it works? Interface Builder Step
-- Add UIView in your xib/story board and set that as ISParseBindView subclass.
+### How does it work? Interface Builder Step
+- Add a UIView in your xib/story board and set that as ISParseBindView subclass.
 - Add some components that implement ISParseBindable in that ISParseBindView.
-- On Attributes Inspector, fill: FieldType, FieldPath and Persist, the others aren't required.
-- After setup the components, you need right click on your ISParseBindView and bind it with ISParseBindable components.
-- Create an @IBoutlet for bind your ISParseBindView.
+- On the Attributes Inspector, fill: FieldType, FieldPath and Persist - the others aren't required.
+- After setting up the components, you need right click on your ISParseBindView and bind it with ISParseBindable components.
+- Create an @IBoutlet to bind your ISParseBindView.
 
-### How it works in practice? Code Step
+### How does it work in practice? Code Step
 
 Setup Parse Server credentials in AppDelegate, on "didFinishLaunchingWithOptions" method:
 
 ```swift
-        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = "applicatioID"
-            ParseMutableClientConfiguration.clientKey = "clientKey"
-            ParseMutableClientConfiguration.server = "serverURL"
-        })
-        
-        Parse.initialize(with: parseConfiguration)
+    let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
+        ParseMutableClientConfiguration.applicationId = "applicationID"
+        ParseMutableClientConfiguration.clientKey = "clientKey"
+        ParseMutableClientConfiguration.server = "serverURL"
+    })
+    
+    Parse.initialize(with: parseConfiguration)
 ```
 
 In some UIViewController, do:
@@ -110,9 +110,9 @@ Learn about how to use variables of ISParseBindable protocol works.
 
 
 
-> Developers can use optionals ISParseBindable vars for create your own field validator.
+> Developers can use optionals ISParseBindable vars to create your own field validator.
 >
-> FieldTypeError, Required and Required Error is not used in ISParseBind algorithm. You can use as Helper for make your own validation rule.
+> FieldTypeError, Required and Required Error is not used in ISParseBind algorithm. You can use as Helper to make your own validation rule.
 
 
 
@@ -125,26 +125,26 @@ Learn about how to use variables of ISParseBindable protocol works.
       vehicle = {
           brand = {
            	 car = {
-              	model: 
+              	     model: 
             	 }
           }
       }
   }
   ```
 
-  - "model" value depends of component, for example, if component is a UITextField or UITextView the value will be a String but if component is UIImageView, the value will be UIImage that will be cast to PFFile in algorithm.
-  - In that dictionary structure above, the algorithm will generate 3 classes in Parse Server: Vehicule, Brand and Car.
-  - Always, the last string after "." in fieldPath will be the field in Parse Server, 'model' in that case will be a field and not a class.
+  - "model" value depends of its component's type. For example, if the component is a UITextField or a UITextView, the value will be a String. If the component is a UIImageView, however, the value will be a UIImage that will be cast to a PFFile in the algorithm.
+  - In the above dictionary structure, the algorithm will generate 3 classes in the Parse Server: Vehicule, Brand and Car.
+  - The last string after "." in the fieldPath will always be the field in Parse Server. 'model', in the given example, will be a field and not a class.
 
 
 
-### Be alerted, before and after, of set or filling the value of component
+### Be alerted, before and after, of set or filling the value of a component
 
-- For that you need implement some ISParseBind Component, like:
+For that you need implement some ISParseBind Component, such as:
 
   - ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
 
-  - Or you can create your own component that implement ISParseBindable and support native components of section 'Supported Components', and implement these functions:
+Or you can create your own component that implements ISParseBindable and supports native components of the section 'Supported Components'. You will also need to implement these functions:
 
     ```swift
     func willSet(value:Any) -> Any?
