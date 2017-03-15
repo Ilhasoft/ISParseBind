@@ -142,21 +142,17 @@ Learn about how to use variables of ISParseBindable protocol works.
 
 For that you need implement some ISParseBind Component, such as:
 
-  - ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
+- ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
 
 Or you can create your own component that implements ISParseBindable and supports native components of the section 'Supported Components'. You will also need to implement these functions:
 
-    ```swift
-    func willSet(value:Any) -> Any?
-    func didSet(value:Any)
-    func willFill(value:Any) -> Any?
-    func didFill(value:Any)
-    ```
-
-    > willFill can be used for "string format" for example before fill the field.
-    >
-    > willSet can be used for remove the string formatation before save in Parse. 
-    >
-    > You can ignore willFill returning "nil" on willFill implementation method
-    >
-    > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
+```swift
+func willSet(value:Any) -> Any?
+func didSet(value:Any)
+func willFill(value:Any) -> Any?
+func didFill(value:Any)
+```
+> willFill can be used for "string format" for example before fill the field.
+> willSet can be used for remove the string formatation before save in Parse.
+> You can ignore willFill returning "nil" on willFill implementation method
+> You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
