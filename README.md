@@ -14,23 +14,37 @@ With ISParseBind you can save, update and query PFObjects using the power of Xco
 - UILabel (Read Only)
 - UIButton (Comming soon for Radio Button)
 
+
+
 ### Custom Components:
+
 - You can implement ISParseBindable protocol to create your own component.
 - All custom components need to subclass one of the supported components and to implement ISParseBindable
 
+
+
 ### Requirements:
+
 - iOS 9 +
 - Swift 3
 
+
+
 ### Install with Cocoapods:
+
 - pod 'ISParseBind', :git => 'https://github.com/ilhasoft/ISParseBind.git', :branch => 'master'
 
+
+
 ### How does it work? Interface Builder Step
+
 - Add a UIView in your xib/story board and set that as ISParseBindView subclass.
 - Add some components that implement ISParseBindable in that ISParseBindView.
 - On the Attributes Inspector, fill: FieldType, FieldPath and Persist - the others aren't required.
 - After setting up the components, you need right click on your ISParseBindView and bind it with ISParseBindable components.
 - Create an @IBoutlet to bind your ISParseBindView.
+
+
 
 ### How does it work in practice? Code Step
 
@@ -48,15 +62,19 @@ Setup Parse Server credentials in AppDelegate, on "didFinishLaunchingWithOptions
 
 In some UIViewController, do:
 
+1:
+
 ```swift
-1: import ISParseBind
+import ISParseBind
 ```
+2:
+
 ```swift
-2: @IBOutlet var parseBindView:ISParseBindView!
+@IBOutlet var parseBindView:ISParseBindView!
 ```
-```swift
 3: Implement ISParseBindViewDelegate
 
+```swift
 parseBindView.delegate = self
 
 extension yourViewController : ISParseBindViewDelegate {
@@ -90,9 +108,12 @@ extension yourViewController : ISParseBindViewDelegate {
     }        
 }
 ```
+4: 
+
 ```swift
-4: self.parseBindView.save()
+self.parseBindView.save()
 ```
+
 
 
 ### ISParseBindable vars
@@ -138,6 +159,7 @@ Learn about how to use variables of ISParseBindable protocol works.
 
 
 
+
 ### Be alerted, before and after, of set or filling the value of a component
 
 For that you need implement some ISParseBind Component, such as:
@@ -152,7 +174,12 @@ func didSet(value:Any)
 func willFill(value:Any) -> Any?
 func didFill(value:Any)
 ```
+
+
 > willFill can be used for "string format" for example before fill the field.
+>
 > willSet can be used for remove the string formatation before save in Parse.
+>
 > You can ignore willFill returning "nil" on willFill implementation method
+>
 > You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
