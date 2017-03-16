@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author             = { "Daniel Amaral" => "daniel@ilhasoft.com.br" }
   s.social_media_url   = "http://twitter.com/danielamarall"
   s.ios.deployment_target = '9.0'
-  s.source       = { :git => "https://github.com/Ilhasoft/ISParseBind.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/Ilhasoft/ISParseBind.git", :tag => s.version }
   s.source_files  = "Classes", "ISParseBind/Classes/**/*"
   #s.exclude_files = "Classes/Exclude"
   #s.public_header_files = 'Pod/Classes/**/*.h'
