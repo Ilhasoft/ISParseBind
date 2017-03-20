@@ -17,6 +17,11 @@ open class ISParseBindTextView: UITextView, ISParseBindable {
         super.init(coder: aDecoder)
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        setupLayoutWithUnderline(color: underlineColor)
+    }
+    
     @IBInspectable open var required: Bool = false
     @IBInspectable open var underlineColor: UIColor = UIColor.clear {
         didSet {
