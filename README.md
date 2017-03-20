@@ -32,7 +32,7 @@ With ISParseBind you can save, update and query PFObjects using the power of Xco
 
 ### Install with Cocoapods:
 
-- pod 'ISParseBind', :git => 'https://github.com/ilhasoft/ISParseBind.git', :branch => 'master'
+- pod 'ISParseBind'
 
 
 
