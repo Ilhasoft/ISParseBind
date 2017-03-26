@@ -1,15 +1,15 @@
 //
-//  ISParseBindImageView.swift
+//  ISParseBindSwitch.swift
 //  ISParseBind
 //
-//  Created by Daniel Amaral on 11/03/17.
+//  Created by Daniel Amaral on 26/03/17.
 //  Copyright © 2017 Ilhasoft. All rights reserved.
 //
 
 import UIKit
 
-open class ISParseBindImageView: UIImageView, ISParseBindable {
-
+open class ISParseBindSwitch: UISwitch, ISParseBindable {
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -24,5 +24,5 @@ open class ISParseBindImageView: UIImageView, ISParseBindable {
     @IBInspectable open var fieldTypeError: String = ""
     @IBInspectable open var fieldPath: String = ""
     @IBInspectable open var persist: Bool = true
-
+    
 }

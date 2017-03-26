@@ -64,8 +64,7 @@ open class ISParseBindView: UIView {
                 fieldValue = fieldValue.doubleValue as AnyObject
                 return fieldValue
             case .Logic:
-                print("fieldValue = .Logic\(fieldValue)")
-                break
+                return fieldValue
             case .Image:
                 if let value = getFieldWithCast(fieldValue) as? PFFile {
                     fieldValue = value
@@ -186,6 +185,10 @@ open class ISParseBindView: UIView {
                     extractValueAndUpdateComponent(pfObject: pfObject, component: component)
                 }else {
                     
+                    if pfObject.value(forKey: key) is NSNull {
+                        return
+                    }
+                    
                     if let textField = component as? UITextField {
                         var value = String(describing: pfObject.value(forKey: key)!)                        
                         let persistableComponent = (textField as! ISParseBindable)
@@ -261,6 +264,20 @@ open class ISParseBindView: UIView {
                         }
                         
                         label.text = value
+                        persistableComponent.didFill?(value: value)
+                    }else if let uiSwitch = component as? UISwitch {
+                        var value = pfObject.value(forKey: key) as! Bool
+                        let persistableComponent = (uiSwitch as! ISParseBindable)
+                        
+                        if persistableComponent.willFill != nil {
+                            if let newValue = persistableComponent.willFill!(value: value) {
+                                value = newValue as! Bool
+                            }else {
+                                return
+                            }
+                        }
+                        
+                        uiSwitch.isOn = value
                         persistableComponent.didFill?(value: value)
                     }
                     
@@ -386,6 +403,10 @@ open class ISParseBindView: UIView {
                 }else {
                     fieldValue = NSNull()
                 }
+                
+            }else if let uiSwitch = field as? ISParseBindable, uiSwitch is UISwitch
+                && uiSwitch.fieldPath.characters.count > 0 {
+                fieldValue = (uiSwitch as! UISwitch).isOn as AnyObject!
                 
             }else {
                 continue
