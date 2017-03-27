@@ -10,7 +10,7 @@
 		04049386C4B54EFE18F5A88B /* Pods_ISParseBind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */; };
 		652E3F161E74526100C21D54 /* ISParseBindImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F151E74526100C21D54 /* ISParseBindImageView.swift */; };
 		652E3F1A1E74620C00C21D54 /* ISParseBindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */; };
-		652E3F241E748F8F00C21D54 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 652E3F231E748F8F00C21D54 /* ISParseBind.h */; };
+		652E3F241E748F8F00C21D54 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 652E3F231E748F8F00C21D54 /* ISParseBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6533C4401E87FAD4000069CB /* ISParseBindSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533C43F1E87FAD4000069CB /* ISParseBindSwitch.swift */; };
 		6580E4171E72ED6100B02B86 /* ISParseBindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4161E72ED6100B02B86 /* ISParseBindView.swift */; };
 		6580E4191E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580E4181E72FB4A00B02B86 /* ISParseBindEntityBuilder.swift */; };
