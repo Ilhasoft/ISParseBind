@@ -11,6 +11,7 @@ With ISParseBind you can save, update and query PFObjects using the power of Xco
 - TextView
 - UIImageView
 - UISlider
+- UISwitch
 - UILabel (Read Only)
 - UIButton (Comming soon for Radio Button)
 
@@ -87,25 +88,34 @@ extension yourViewController : ISParseBindViewDelegate {
     }
     
   func didSave(view: ISParseBindView, object: PFObject, isMainEntity:Bool, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            DispatchQueue.main.async {
-                self.hud?.hide(animated: true)
-            }
-        }else {
-            if isMainEntity == true {
-                self.parseBindView.parseObject = object
-                DispatchQueue.main.async {
-                    self.hud?.label.text = "Main Entity did save \(object.parseClassName)"
-                    self.hud?.hide(animated: true, afterDelay: 2)
-                }
-            }else {
-                DispatchQueue.main.async {
-                    self.hud!.label.text = "Saving \(object.parseClassName)"
-                }
-            }
-        }
-    }        
+        
+  }
+  
+  
+  func willFill(component: Any, value: Any) -> Any? {
+      //Check wich component will be filled and return a custom value
+      if let component = component as? UITextField, component == txtName {
+          return "\(value as! String) Smith"
+
+      //Return nil if you want to ignore the fill
+      }else if let component = component as? UIImageView, component == imgPicture {
+          return nil
+      }
+
+      return value
+   }
+    
+  func didFill(component: Any, value: Any) { }
+
+  func willSet(component: Any, value: Any) -> Any? {
+      //Check wich component will be setup and return a custom value
+      if let component = component as? UIImageView, component == imgPicture {
+          return getImageInGrayScale(imgPicture.image)
+      }        
+      return value
+  }
+
+  func didSet(component: Any, value: Any) { }  
 }
 ```
 4: 
@@ -157,29 +167,3 @@ Learn about how to use variables of ISParseBindable protocol works.
   - In the above dictionary structure, the algorithm will generate 3 classes in the Parse Server: Vehicule, Brand and Car.
   - The last string after "." in the fieldPath will always be the field in Parse Server. 'model', in the given example, will be a field and not a class.
 
-
-
-
-### Be alerted, before and after, of set or filling the value of a component
-
-For that you need implement some ISParseBind Component, such as:
-
-- ISParseBindImageView, ISParseBindTextField, ISParseBindTextView, ISParseBindSlider, ISParseBindLabel.
-
-Or you can create your own component that implements ISParseBindable and supports native components of the section 'Supported Components'. You will also need to implement these functions:
-
-```swift
-func willSet(value:Any) -> Any?
-func didSet(value:Any)
-func willFill(value:Any) -> Any?
-func didFill(value:Any)
-```
-
-
-> willFill can be used for "string format" for example before fill the field.
->
-> willSet can be used for remove the string formatation before save in Parse.
->
-> You can ignore willFill returning "nil" on willFill implementation method
->
-> You can set persist = false in execution time, you only need implement willSet and call self.persist = false before the method return.
