@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ISParseBind"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Use Interface Builder for bind components with parse server."
   s.description  = <<-DESC
 		   With ISParseBind you can save, update, and query PFObjects using the power of Xcode Interface Builder resources.  
