@@ -92,6 +92,9 @@ extension yourViewController : ISParseBindViewDelegate {
         
   }
   
+  func didFetch(view: ISParseBindView, error: Error?) {
+      print("finish fetch")
+  }  
   
   func willFill(component: Any, value: Any) -> Any? {
       //Check wich component will be filled and return a custom value
@@ -123,6 +126,12 @@ extension yourViewController : ISParseBindViewDelegate {
 
 ```swift
 self.parseBindView.save()
+```
+
+5: Optional Fetch/Query data. In viewDidLoad(), do:
+
+```swift
+self.parseBindView.parseObject = PFObject(withoutDataWithClassName: "SomeClass", objectId: "YYYYXXX")
 ```
 
 
