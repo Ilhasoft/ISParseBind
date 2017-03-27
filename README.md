@@ -73,7 +73,8 @@ import ISParseBind
 ```swift
 @IBOutlet var parseBindView:ISParseBindView!
 ```
-3: Implement ISParseBindViewDelegate
+3: Implement ISParseBindViewDelegate.
+>It's not mandatory, but if you need to intercept some methods of before or after processing, implement:
 
 ```swift
 parseBindView.delegate = self
