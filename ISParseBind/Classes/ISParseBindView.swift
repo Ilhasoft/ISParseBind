@@ -13,6 +13,11 @@ import Kingfisher
 public protocol ISParseBindViewDelegate {
     func willSave(view:ISParseBindView,object:PFObject) -> PFObject?
     func didSave(view:ISParseBindView,object:PFObject,isMainEntity:Bool,error:Error?)
+    func didFetch(view:ISParseBindView,error:Error?)
+    func willFill(component:Any, value:Any) -> Any?
+    func didFill(component:Any, value: Any)
+    func willSet(component:Any, value:Any) -> Any?
+    func didSet(component:Any, value: Any)
 }
 
 open class ISParseBindView: UIView {
@@ -94,7 +99,7 @@ open class ISParseBindView: UIView {
         
         sortFields()
         for field in fields {
-            let fieldNamePath = (field as! ISParseBindable).fieldPath.components(separatedBy:".")
+            let fieldNamePath = (field as! ISParseBindable).fieldPath!.components(separatedBy:".")
             
             if !fieldNamePath.isEmpty {
                 mainEntity = fieldNamePath.first!
@@ -145,6 +150,7 @@ open class ISParseBindView: UIView {
                 
                 if let error = error {
                     print(error.localizedDescription)
+                    self.delegate?.didFetch(view: self, error: error)
                     return
                 }
                 
@@ -185,100 +191,98 @@ open class ISParseBindView: UIView {
                     extractValueAndUpdateComponent(pfObject: pfObject, component: component)
                 }else {
                     
-                    if pfObject.value(forKey: key) is NSNull {
+                    var value = pfObject.value(forKey: key)
+                    
+                    if value is NSNull {
                         return
                     }
                     
                     if let textField = component as? UITextField {
-                        var value = String(describing: pfObject.value(forKey: key)!)                        
-                        let persistableComponent = (textField as! ISParseBindable)
-                        
-                        if persistableComponent.willFill != nil {
-                            if let newValue = persistableComponent.willFill!(value: value) {
-                                value = newValue as! String
+                        if let delegate = self.delegate {
+                            if var newValue = delegate.willFill(component: component, value: value) {
+                                value = newValue
                             }else {
                                 return
                             }
                         }
+                        textField.text = value as! String
                         
-                        textField.text = value
-                        persistableComponent.didFill?(value: value)
+                        self.delegate?.didFill(component: component, value: value)
+                        
                     }else if let textView = component as? UITextView {
-                        var value = String(describing: pfObject.value(forKey: key)!)
-                        let persistableComponent = (textView as! ISParseBindable)
                         
-                        if persistableComponent.willFill != nil {
-                            if let newValue = persistableComponent.willFill!(value: value) {
-                                value = newValue as! String
+                        if let delegate = self.delegate {
+                            if var newValue = delegate.willFill(component: component, value: value) {
+                                value = newValue
                             }else {
                                 return
                             }
                         }
-
-                        textView.text = value
-                        persistableComponent.didFill?(value: value)
+                        
+                        textView.text = value as! String
+                        
+                        self.delegate?.didFill(component: component, value: value)
                     }else if let imageView = component as? UIImageView {
-                        if var value = pfObject.value(forKey: key) as? PFFile {
-                            let persistableComponent = (imageView as! ISParseBindable)
+                        if var pfFile = value as? PFFile {
                             
-                            if persistableComponent.willFill != nil {
-                                if let newValue = persistableComponent.willFill!(value: value) {
-                                    value = newValue as! PFFile
+                            if let delegate = delegate {
+                                if var newValue = delegate.willFill(component: component, value: pfFile) {
+                                    value = newValue
                                 }else {
                                     return
                                 }
                             }
                             
-                            imageView.kf.setImage(with: URL(string:value.url!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cache, url) in
-                                if let error = error {
-                                    print(error.localizedDescription)
-                                }
-                                persistableComponent.didFill?(value: value)
-                            })
+                            if value is UIImage {
+                                imageView.image = value as! UIImage
+                                self.delegate?.didFill(component: component, value: imageView.image)
+                            }else if value is PFFile {
+                                imageView.kf.setImage(with: URL(string:(value as! PFFile).url!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cache, url) in
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                    }
+                                    self.delegate?.didFill(component: component, value: imageView.image)
+                                })
+                            }
                             
                         }
                     }else if let slider = component as? UISlider {
-                        var value = pfObject.value(forKey: key)! as! Float
-                        let persistableComponent = (slider as! ISParseBindable)
                         
-                        if persistableComponent.willFill != nil {
-                            if let newValue = persistableComponent.willFill!(value: value) {
-                                value = newValue as! Float
+                        if let delegate = self.delegate {
+                            if var newValue = delegate.willFill(component: component, value: value) {
+                                value = newValue
                             }else {
                                 return
                             }
                         }
                         
-                        slider.value = value
-                        persistableComponent.didFill?(value: value)
+                        slider.value = value as! Float
+                        self.delegate?.didFill(component: component, value: value)
+                        
                     }else if let label = component as? UILabel {
-                        var value = String(describing: pfObject.value(forKey: key)!)
-                        let persistableComponent = (label as! ISParseBindable)
                         
-                        if persistableComponent.willFill != nil {
-                            if let newValue = persistableComponent.willFill!(value: value) {
-                                value = newValue as! String
+                        if let delegate = self.delegate {
+                            if var newValue = delegate.willFill(component: component, value: value) {
+                                value = newValue
                             }else {
                                 return
                             }
                         }
                         
-                        label.text = value
-                        persistableComponent.didFill?(value: value)
+                        label.text = value as! String
+                        self.delegate?.didFill(component: component, value: value)
                     }else if let uiSwitch = component as? UISwitch {
-                        var value = pfObject.value(forKey: key) as! Bool
-                        let persistableComponent = (uiSwitch as! ISParseBindable)
                         
-                        if persistableComponent.willFill != nil {
-                            if let newValue = persistableComponent.willFill!(value: value) {
-                                value = newValue as! Bool
+                        if let delegate = self.delegate {
+                            if var newValue = delegate.willFill(component: component, value: value) {
+                                value = newValue
                             }else {
                                 return
                             }
                         }
                         
-                        uiSwitch.isOn = value
-                        persistableComponent.didFill?(value: value)
+                        uiSwitch.isOn = value as! Bool
+                        self.delegate?.didFill(component: component, value: value)
                     }
                     
                     return
@@ -294,7 +298,7 @@ open class ISParseBindView: UIView {
         
         let fieldsSortered = fields.sorted { (parseField1, parseField2) -> Bool in
             if parseField1 is ISParseBindable && parseField2 is ISParseBindable {
-                return (parseField1 as! ISParseBindable).fieldPath.components(separatedBy: ".").count < (parseField2 as! ISParseBindable).fieldPath.components(separatedBy: ".").count
+                return (parseField1 as! ISParseBindable).fieldPath!.components(separatedBy: ".").count < (parseField2 as! ISParseBindable).fieldPath!.components(separatedBy: ".").count
             }else {
                 return false
             }
@@ -311,18 +315,18 @@ open class ISParseBindView: UIView {
             for field in fields {
                 if let field = field as? ISParseBindable, field is UIView {
                     
-                    if  !(field.fieldPath.characters.count > 0) {
+                    if  !(field.fieldPath!.characters.count > 0) {
                         continue
                     }
                     
                     var keyPath = [String]()
                     var keyPathString = ""
-                    for (index,path) in field.fieldPath.components(separatedBy: ".").enumerated() {
+                    for (index,path) in field.fieldPath!.components(separatedBy: ".").enumerated() {
                         let path = path
                         if index == 0 {
                             continue
                         }
-                        if index != field.fieldPath.components(separatedBy:".").count - 1 {
+                        if index != field.fieldPath!.components(separatedBy:".").count - 1 {
                             keyPathString = path
                         }
                         keyPath.append(path)
@@ -348,6 +352,7 @@ open class ISParseBindView: UIView {
                     }
                 }
             }
+            self.delegate?.didFetch(view: self, error: nil)
         }
     }
     
@@ -357,11 +362,11 @@ open class ISParseBindView: UIView {
         for field in self.fields {
             
             let fieldPath = (field as! ISParseBindable).fieldPath
-            let fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType)
+            let fieldType = ISParseBindFieldType(rawValue: (field as! ISParseBindable).fieldType!)
             
             var fieldValue:AnyObject!
 
-            guard fieldPath.characters.count > 0 else {
+            guard fieldPath!.characters.count > 0 else {
                 print("fieldPath is nil")
                 continue
             }
@@ -372,7 +377,7 @@ open class ISParseBindView: UIView {
             }
             
             if let textField = field as? ISParseBindable , textField is UITextField
-                && textField.fieldPath.characters.count > 0 {
+                && textField.fieldPath!.characters.count > 0 {
                 
                 if ((textField as! UITextField).text!.characters.count) > 0 {
                     fieldValue = (textField as! UITextField).text! as AnyObject!
@@ -381,7 +386,7 @@ open class ISParseBindView: UIView {
                 }
                 
             }else if let textView = field as? ISParseBindable, textView is UITextView
-                && textView.fieldPath.characters.count > 0 {
+                && textView.fieldPath!.characters.count > 0 {
                 if ((textView as! UITextView).text!.characters.count) > 0 {
                     fieldValue = (textView as! UITextView).text! as AnyObject!
                 }else {
@@ -389,7 +394,7 @@ open class ISParseBindView: UIView {
                 }
                 
             }else if let imageView = field as? ISParseBindable, imageView is UIImageView
-                && imageView.fieldPath.characters.count > 0 {
+                && imageView.fieldPath!.characters.count > 0 {
                 if (imageView as! UIImageView).image != nil {
                     fieldValue = (imageView as! UIImageView).image
                 }else {
@@ -397,7 +402,7 @@ open class ISParseBindView: UIView {
                 }
 
             }else if let slider = field as? ISParseBindable, slider is UISlider
-                && slider.fieldPath.characters.count > 0 {
+                && slider.fieldPath!.characters.count > 0 {
                 if (slider as! UISlider).value != -1 {
                     fieldValue = (slider as! UISlider).value as AnyObject!
                 }else {
@@ -405,15 +410,19 @@ open class ISParseBindView: UIView {
                 }
                 
             }else if let uiSwitch = field as? ISParseBindable, uiSwitch is UISwitch
-                && uiSwitch.fieldPath.characters.count > 0 {
+                && uiSwitch.fieldPath!.characters.count > 0 {
                 fieldValue = (uiSwitch as! UISwitch).isOn as AnyObject!
                 
             }else {
                 continue
             }
             
-            if let value = field.willSet?(value: fieldValue) {
-                fieldValue = value as AnyObject!
+            if let delegate = self.delegate {
+                if let newValue = delegate.willSet(component: field, value: fieldValue) {
+                    fieldValue = newValue as! AnyObject
+                }else {
+                    continue
+                }
             }
             
             guard (field as! ISParseBindable).persist == true else {
@@ -421,9 +430,9 @@ open class ISParseBindView: UIView {
             }
             
             fieldValue = self.getParseFieldValue(field:field, fieldValue: fieldValue, fieldType: fieldType!) as AnyObject!
-            field.didSet?(value: fieldValue)
+            self.delegate?.didSet(component: field, value: fieldValue)
             
-            self.fieldAndValues.append([fieldPath:fieldValue])
+            self.fieldAndValues.append([fieldPath!:fieldValue])
             
         }
     }
