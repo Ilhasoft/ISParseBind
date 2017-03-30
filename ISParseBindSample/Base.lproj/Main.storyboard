@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ISParseBindSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="ISParseBindView" customModule="ISParseBind">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Brand Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Wq-sB-Dzm" customClass="ISParseBindTextField" customModule="ISParseBind">
+                                <rect key="frame" x="21" y="35" width="332" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="49I-yZ-OVR"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Text"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.brand.name"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                        <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Model" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PNc-RF-ytD" customClass="ISParseBindTextField" customModule="ISParseBind">
+                                <rect key="frame" x="21" y="79" width="332" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hOa-KP-Ole"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.model"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Text"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                        <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rz4-UW-03u" customClass="ISParseBindTextField" customModule="ISParseBind">
+                                <rect key="frame" x="21" y="124" width="332" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Z2u-2L-zO8"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.name"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Text"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                        <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabrication Year" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psV-TD-elk" customClass="ISParseBindLabel" customModule="ISParseBind">
+                                <rect key="frame" x="21" y="169" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="cHa-lr-3zJ"/>
+                                    <constraint firstAttribute="height" constant="21" id="lTJ-Tu-niS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Text"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.fabricationYear"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2000" minValue="2000" maxValue="2017" translatesAutoresizingMaskIntoConstraints="NO" id="Cyh-op-q6r" customClass="ISParseBindSlider" customModule="ISParseBind">
+                                <rect key="frame" x="19" y="196" width="336" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4oc-WF-Qen"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Number"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.fabricationYear"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="persist" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sliderChangedWithSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z9l-46-EGR"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tM-gG-ss6" customClass="ISParseBindLabel" customModule="ISParseBind">
+                                <rect key="frame" x="303" y="180" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="phx-kG-Jgq"/>
+                                    <constraint firstAttribute="width" constant="50" id="xeL-R0-H8m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldType" value="Text"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldPath" value="vehicule.car.fabricationYear"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H85-gA-Vxi">
+                                <rect key="frame" x="127.5" y="238" width="120" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="55W-dU-z0O"/>
+                                    <constraint firstAttribute="width" constant="120" id="OEz-3n-GYj"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="btSaveTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hu1-N5-ano"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cyh-op-q6r" firstAttribute="top" secondItem="psV-TD-elk" secondAttribute="bottom" constant="6" id="58h-0U-5mO"/>
+                            <constraint firstAttribute="trailing" secondItem="PNc-RF-ytD" secondAttribute="trailing" constant="22" id="5BR-Cg-DV9"/>
+                            <constraint firstItem="0Wq-sB-Dzm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="8WP-WW-heX"/>
+                            <constraint firstItem="2tM-gG-ss6" firstAttribute="top" secondItem="Rz4-UW-03u" secondAttribute="bottom" constant="26" id="AjC-6c-Cso"/>
+                            <constraint firstItem="psV-TD-elk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="Dwb-GK-FBx"/>
+                            <constraint firstItem="0Wq-sB-Dzm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="E89-9Q-sh3"/>
+                            <constraint firstAttribute="trailing" secondItem="Rz4-UW-03u" secondAttribute="trailing" constant="22" id="Eia-Oa-tZM"/>
+                            <constraint firstAttribute="trailing" secondItem="0Wq-sB-Dzm" secondAttribute="trailing" constant="22" id="FKV-uS-2w4"/>
+                            <constraint firstItem="psV-TD-elk" firstAttribute="top" secondItem="Rz4-UW-03u" secondAttribute="bottom" constant="15" id="dAc-uq-Rc2"/>
+                            <constraint firstAttribute="trailing" secondItem="Cyh-op-q6r" secondAttribute="trailing" constant="22" id="mDV-Xe-hRx"/>
+                            <constraint firstItem="H85-gA-Vxi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qth-fc-Gn6"/>
+                            <constraint firstItem="Cyh-op-q6r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="r5R-fC-QCw"/>
+                            <constraint firstItem="H85-gA-Vxi" firstAttribute="top" secondItem="Cyh-op-q6r" secondAttribute="bottom" constant="12" id="u08-EJ-D3O"/>
+                            <constraint firstItem="PNc-RF-ytD" firstAttribute="top" secondItem="0Wq-sB-Dzm" secondAttribute="bottom" constant="14" id="u92-K5-Dqq"/>
+                            <constraint firstAttribute="trailing" secondItem="2tM-gG-ss6" secondAttribute="trailing" constant="22" id="uSb-cb-y9L"/>
+                            <constraint firstItem="Rz4-UW-03u" firstAttribute="top" secondItem="PNc-RF-ytD" secondAttribute="bottom" constant="15" id="usY-cs-sc9"/>
+                            <constraint firstItem="Rz4-UW-03u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="vtI-MZ-OdQ"/>
+                            <constraint firstItem="PNc-RF-ytD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="xzx-CI-Iew"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="fields" destination="0Wq-sB-Dzm" id="Yst-xo-7Yx"/>
+                            <outletCollection property="fields" destination="PNc-RF-ytD" id="xK3-7b-MgJ"/>
+                            <outletCollection property="fields" destination="Rz4-UW-03u" id="yYw-oa-QWU"/>
+                            <outletCollection property="fields" destination="Cyh-op-q6r" id="fZe-fs-jM1"/>
+                            <outletCollection property="fields" destination="2tM-gG-ss6" id="Lcy-nd-DUd"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="lbFabricationYear" destination="2tM-gG-ss6" id="b6G-Xe-Had"/>
+                        <outlet property="parseBindView" destination="8bC-Xf-vdC" id="tzt-n6-EB8"/>
+                        <outlet property="slider" destination="Cyh-op-q6r" id="xhi-vZ-2e7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

@@ -38,7 +38,10 @@ open class ISParseBindTextField: UITextField, ISParseBindable {
 
     func setupLayoutWithUnderline(color:UIColor) {
         if color == UIColor.clear {
-            self.layer.sublayers?.removeAll()
+            let index = self.layer.sublayers?.index {($0.frame.height == 1)}
+            if let index = index {
+                self.layer.sublayers?.remove(at: index)
+            }
         }else {
             let bottomLine = CALayer()
             bottomLine.frame = CGRect(x: 0, y: self.frame.height - 1, width: self.frame.width, height: 1)

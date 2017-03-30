@@ -8,3 +8,12 @@ pod 'Parse'
 pod 'Kingfisher'
 
 end
+
+target 'ISParseBindSample’ do
+  use_frameworks!
+
+pod 'Parse'
+pod 'Kingfisher'
+pod 'MBProgressHUD'
+
+end

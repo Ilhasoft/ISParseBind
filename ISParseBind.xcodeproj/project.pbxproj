@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		04049386C4B54EFE18F5A88B /* Pods_ISParseBind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */; };
+		5E88301E77C98656EE65CFC5 /* Pods_ISParseBindSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD8AC122211024E8C40E719 /* Pods_ISParseBindSample.framework */; };
+		6526BD581E8C9B8C00F609BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526BD571E8C9B8C00F609BB /* AppDelegate.swift */; };
+		6526BD5A1E8C9B8C00F609BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526BD591E8C9B8C00F609BB /* ViewController.swift */; };
+		6526BD5D1E8C9B8C00F609BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6526BD5B1E8C9B8C00F609BB /* Main.storyboard */; };
+		6526BD5F1E8C9B8C00F609BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6526BD5E1E8C9B8C00F609BB /* Assets.xcassets */; };
+		6526BD621E8C9B8C00F609BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6526BD601E8C9B8C00F609BB /* LaunchScreen.storyboard */; };
+		6526BD6D1E8C9B8C00F609BB /* ISParseBindSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526BD6C1E8C9B8C00F609BB /* ISParseBindSampleTests.swift */; };
+		6526BD781E8C9B8C00F609BB /* ISParseBindSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526BD771E8C9B8C00F609BB /* ISParseBindSampleUITests.swift */; };
+		6526BD851E8D4D4B00F609BB /* ISParseBind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6580E4081E72019E00B02B86 /* ISParseBind.framework */; };
 		652E3F161E74526100C21D54 /* ISParseBindImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F151E74526100C21D54 /* ISParseBindImageView.swift */; };
 		652E3F1A1E74620C00C21D54 /* ISParseBindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */; };
 		652E3F241E748F8F00C21D54 /* ISParseBind.h in Headers */ = {isa = PBXBuildFile; fileRef = 652E3F231E748F8F00C21D54 /* ISParseBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,9 +32,39 @@
 		65FD2F3A1E744AD500AC4E00 /* ISParseBindSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6526BD691E8C9B8C00F609BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6580E3FF1E72019E00B02B86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6526BD541E8C9B8B00F609BB;
+			remoteInfo = ISParseBindSample;
+		};
+		6526BD741E8C9B8C00F609BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6580E3FF1E72019E00B02B86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6526BD541E8C9B8B00F609BB;
+			remoteInfo = ISParseBindSample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		02E82010C47883D8F1205077 /* Pods-ISParseBind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBind.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind.debug.xcconfig"; sourceTree = "<group>"; };
 		1FA9F4137FE43DB5DC8A3F09 /* Pods-ISParseBind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBind.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind.release.xcconfig"; sourceTree = "<group>"; };
+		6526BD551E8C9B8B00F609BB /* ISParseBindSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISParseBindSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6526BD571E8C9B8C00F609BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6526BD591E8C9B8C00F609BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6526BD5C1E8C9B8C00F609BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6526BD5E1E8C9B8C00F609BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6526BD611E8C9B8C00F609BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6526BD631E8C9B8C00F609BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6526BD681E8C9B8C00F609BB /* ISParseBindSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISParseBindSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6526BD6C1E8C9B8C00F609BB /* ISParseBindSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISParseBindSampleTests.swift; sourceTree = "<group>"; };
+		6526BD6E1E8C9B8C00F609BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6526BD731E8C9B8C00F609BB /* ISParseBindSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISParseBindSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6526BD771E8C9B8C00F609BB /* ISParseBindSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISParseBindSampleUITests.swift; sourceTree = "<group>"; };
+		6526BD791E8C9B8C00F609BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652E3F151E74526100C21D54 /* ISParseBindImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindImageView.swift; sourceTree = "<group>"; };
 		652E3F191E74620C00C21D54 /* ISParseBindLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindLabel.swift; sourceTree = "<group>"; };
 		652E3F231E748F8F00C21D54 /* ISParseBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISParseBind.h; sourceTree = "<group>"; };
@@ -42,9 +81,35 @@
 		6580E4271E73110700B02B86 /* ISParseBindStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindStringExtension.swift; sourceTree = "<group>"; };
 		65FD2F391E744AD500AC4E00 /* ISParseBindSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISParseBindSlider.swift; sourceTree = "<group>"; };
 		683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISParseBind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2FCDF82DE1454F4B375D00 /* Pods-ISParseBindSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBindSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBindSample/Pods-ISParseBindSample.release.xcconfig"; sourceTree = "<group>"; };
+		759814B962A3B333F4593013 /* Pods-ISParseBindSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISParseBindSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISParseBindSample/Pods-ISParseBindSample.debug.xcconfig"; sourceTree = "<group>"; };
+		ABD8AC122211024E8C40E719 /* Pods_ISParseBindSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISParseBindSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6526BD521E8C9B8B00F609BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526BD851E8D4D4B00F609BB /* ISParseBind.framework in Frameworks */,
+				5E88301E77C98656EE65CFC5 /* Pods_ISParseBindSample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD651E8C9B8C00F609BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD701E8C9B8C00F609BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6580E4041E72019E00B02B86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,10 +121,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6526BD561E8C9B8C00F609BB /* ISParseBindSample */ = {
+			isa = PBXGroup;
+			children = (
+				6526BD571E8C9B8C00F609BB /* AppDelegate.swift */,
+				6526BD591E8C9B8C00F609BB /* ViewController.swift */,
+				6526BD5B1E8C9B8C00F609BB /* Main.storyboard */,
+				6526BD5E1E8C9B8C00F609BB /* Assets.xcassets */,
+				6526BD601E8C9B8C00F609BB /* LaunchScreen.storyboard */,
+				6526BD631E8C9B8C00F609BB /* Info.plist */,
+			);
+			path = ISParseBindSample;
+			sourceTree = "<group>";
+		};
+		6526BD6B1E8C9B8C00F609BB /* ISParseBindSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				6526BD6C1E8C9B8C00F609BB /* ISParseBindSampleTests.swift */,
+				6526BD6E1E8C9B8C00F609BB /* Info.plist */,
+			);
+			path = ISParseBindSampleTests;
+			sourceTree = "<group>";
+		};
+		6526BD761E8C9B8C00F609BB /* ISParseBindSampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6526BD771E8C9B8C00F609BB /* ISParseBindSampleUITests.swift */,
+				6526BD791E8C9B8C00F609BB /* Info.plist */,
+			);
+			path = ISParseBindSampleUITests;
+			sourceTree = "<group>";
+		};
 		6580E3FE1E72019E00B02B86 = {
 			isa = PBXGroup;
 			children = (
 				6580E40A1E72019E00B02B86 /* ISParseBind */,
+				6526BD561E8C9B8C00F609BB /* ISParseBindSample */,
+				6526BD6B1E8C9B8C00F609BB /* ISParseBindSampleTests */,
+				6526BD761E8C9B8C00F609BB /* ISParseBindSampleUITests */,
 				6580E4091E72019E00B02B86 /* Products */,
 				88B89B8CCB9C8A93B473E50B /* Pods */,
 				FC27C6899DBB6EEBEAA7E9B5 /* Frameworks */,
@@ -70,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				6580E4081E72019E00B02B86 /* ISParseBind.framework */,
+				6526BD551E8C9B8B00F609BB /* ISParseBindSample.app */,
+				6526BD681E8C9B8C00F609BB /* ISParseBindSampleTests.xctest */,
+				6526BD731E8C9B8C00F609BB /* ISParseBindSampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +242,8 @@
 			children = (
 				02E82010C47883D8F1205077 /* Pods-ISParseBind.debug.xcconfig */,
 				1FA9F4137FE43DB5DC8A3F09 /* Pods-ISParseBind.release.xcconfig */,
+				759814B962A3B333F4593013 /* Pods-ISParseBindSample.debug.xcconfig */,
+				6F2FCDF82DE1454F4B375D00 /* Pods-ISParseBindSample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -148,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				683FBDAFAC2EB2D9436B91E8 /* Pods_ISParseBind.framework */,
+				ABD8AC122211024E8C40E719 /* Pods_ISParseBindSample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,6 +271,62 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		6526BD541E8C9B8B00F609BB /* ISParseBindSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6526BD801E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSample" */;
+			buildPhases = (
+				B98A0182F0817D6F98D7537E /* [CP] Check Pods Manifest.lock */,
+				6526BD511E8C9B8B00F609BB /* Sources */,
+				6526BD521E8C9B8B00F609BB /* Frameworks */,
+				6526BD531E8C9B8B00F609BB /* Resources */,
+				0C8810479F32F9178B716911 /* [CP] Embed Pods Frameworks */,
+				3416582FE06FB73181E1011A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ISParseBindSample;
+			productName = ISParseBindSample;
+			productReference = 6526BD551E8C9B8B00F609BB /* ISParseBindSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6526BD671E8C9B8C00F609BB /* ISParseBindSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6526BD811E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSampleTests" */;
+			buildPhases = (
+				6526BD641E8C9B8C00F609BB /* Sources */,
+				6526BD651E8C9B8C00F609BB /* Frameworks */,
+				6526BD661E8C9B8C00F609BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6526BD6A1E8C9B8C00F609BB /* PBXTargetDependency */,
+			);
+			name = ISParseBindSampleTests;
+			productName = ISParseBindSampleTests;
+			productReference = 6526BD681E8C9B8C00F609BB /* ISParseBindSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6526BD721E8C9B8C00F609BB /* ISParseBindSampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6526BD821E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSampleUITests" */;
+			buildPhases = (
+				6526BD6F1E8C9B8C00F609BB /* Sources */,
+				6526BD701E8C9B8C00F609BB /* Frameworks */,
+				6526BD711E8C9B8C00F609BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6526BD751E8C9B8C00F609BB /* PBXTargetDependency */,
+			);
+			name = ISParseBindSampleUITests;
+			productName = ISParseBindSampleUITests;
+			productReference = 6526BD731E8C9B8C00F609BB /* ISParseBindSampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6580E4071E72019E00B02B86 /* ISParseBind */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6580E4101E72019E00B02B86 /* Build configuration list for PBXNativeTarget "ISParseBind" */;
@@ -192,9 +353,27 @@
 		6580E3FF1E72019E00B02B86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Ilhasoft;
 				TargetAttributes = {
+					6526BD541E8C9B8B00F609BB = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ZE9A9HAM9Z;
+						ProvisioningStyle = Automatic;
+					};
+					6526BD671E8C9B8C00F609BB = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ZE9A9HAM9Z;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6526BD541E8C9B8B00F609BB;
+					};
+					6526BD721E8C9B8C00F609BB = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ZE9A9HAM9Z;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6526BD541E8C9B8B00F609BB;
+					};
 					6580E4071E72019E00B02B86 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = ZE9A9HAM9Z;
@@ -209,6 +388,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 6580E3FE1E72019E00B02B86;
 			productRefGroup = 6580E4091E72019E00B02B86 /* Products */;
@@ -216,11 +396,38 @@
 			projectRoot = "";
 			targets = (
 				6580E4071E72019E00B02B86 /* ISParseBind */,
+				6526BD541E8C9B8B00F609BB /* ISParseBindSample */,
+				6526BD671E8C9B8C00F609BB /* ISParseBindSampleTests */,
+				6526BD721E8C9B8C00F609BB /* ISParseBindSampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6526BD531E8C9B8B00F609BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526BD621E8C9B8C00F609BB /* LaunchScreen.storyboard in Resources */,
+				6526BD5F1E8C9B8C00F609BB /* Assets.xcassets in Resources */,
+				6526BD5D1E8C9B8C00F609BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD661E8C9B8C00F609BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD711E8C9B8C00F609BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6580E4061E72019E00B02B86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,6 +438,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C8810479F32F9178B716911 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISParseBindSample/Pods-ISParseBindSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0EC8FC547A6838F1D7EFA445 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +466,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3416582FE06FB73181E1011A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISParseBindSample/Pods-ISParseBindSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2E47777B8A7D580271C3115 /* [CP] Copy Pods Resources */ = {
@@ -261,9 +498,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISParseBind/Pods-ISParseBind-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B98A0182F0817D6F98D7537E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6526BD511E8C9B8B00F609BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526BD5A1E8C9B8C00F609BB /* ViewController.swift in Sources */,
+				6526BD581E8C9B8C00F609BB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD641E8C9B8C00F609BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526BD6D1E8C9B8C00F609BB /* ISParseBindSampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6526BD6F1E8C9B8C00F609BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526BD781E8C9B8C00F609BB /* ISParseBindSampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6580E4031E72019E00B02B86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,7 +562,137 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6526BD6A1E8C9B8C00F609BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6526BD541E8C9B8B00F609BB /* ISParseBindSample */;
+			targetProxy = 6526BD691E8C9B8C00F609BB /* PBXContainerItemProxy */;
+		};
+		6526BD751E8C9B8C00F609BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6526BD541E8C9B8B00F609BB /* ISParseBindSample */;
+			targetProxy = 6526BD741E8C9B8C00F609BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6526BD5B1E8C9B8C00F609BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6526BD5C1E8C9B8C00F609BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6526BD601E8C9B8C00F609BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6526BD611E8C9B8C00F609BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		6526BD7A1E8C9B8C00F609BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 759814B962A3B333F4593013 /* Pods-ISParseBindSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6526BD7B1E8C9B8C00F609BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2FCDF82DE1454F4B375D00 /* Pods-ISParseBindSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6526BD7C1E8C9B8C00F609BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISParseBindSample.app/ISParseBindSample";
+			};
+			name = Debug;
+		};
+		6526BD7D1E8C9B8C00F609BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISParseBindSample.app/ISParseBindSample";
+			};
+			name = Release;
+		};
+		6526BD7E1E8C9B8C00F609BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ISParseBindSample;
+			};
+			name = Debug;
+		};
+		6526BD7F1E8C9B8C00F609BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = ZE9A9HAM9Z;
+				INFOPLIST_FILE = ISParseBindSampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ilhasoft.ISParseBindSampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ISParseBindSample;
+			};
+			name = Release;
+		};
 		6580E40E1E72019E00B02B86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -433,6 +840,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6526BD801E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6526BD7A1E8C9B8C00F609BB /* Debug */,
+				6526BD7B1E8C9B8C00F609BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6526BD811E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6526BD7C1E8C9B8C00F609BB /* Debug */,
+				6526BD7D1E8C9B8C00F609BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6526BD821E8C9B8C00F609BB /* Build configuration list for PBXNativeTarget "ISParseBindSampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6526BD7E1E8C9B8C00F609BB /* Debug */,
+				6526BD7F1E8C9B8C00F609BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6580E4021E72019E00B02B86 /* Build configuration list for PBXProject "ISParseBind" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
