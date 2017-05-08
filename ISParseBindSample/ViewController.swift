@@ -23,10 +23,34 @@ class ViewController: UIViewController {
         parseBindView.delegate = self
     }
     
-    @IBAction func btSaveTapped() {
+    func validate() {
+        let filtered = self.parseBindView.fields.filter {($0 is UITextField
+                                                    && ($0 as! ISParseBindable).required == true
+                                                    && ($0 as! UITextField).text!.isEmpty)}
+        if !filtered.isEmpty {
+            shake(component: filtered.first as! UIView)
+        }else {
+            save()
+        }
+        
+    }
+
+    func shake(component:UIView) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0]
+        component.layer.add(animation, forKey: "shake")
+    }
+    
+    func save() {
         hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud?.label.text = "Saving..."
         self.parseBindView.save()
+    }
+    
+    @IBAction func btSaveTapped() {
+        validate()
     }
     
     @IBAction func sliderChanged(slider:UISlider) {

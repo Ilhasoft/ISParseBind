@@ -157,11 +157,7 @@ class ISParseBindEntityBuilder: NSObject {
             
             if keyPathArray.count >= 2 {
                 
-                for key in keyPathArray {
-                    
-//                    if keyPathArray.count == 1 {
-//                        continue
-//                    }
+                for _ in keyPathArray {
                     
                     let value = ISParseBindEntityBuilder.mainDictionary.value(forKeyPath: keyPath)
                     let filtered = dictionaryObjectsList.filter {( ($0 as! [String:Any]).keys.first! == keyPath )}
@@ -187,12 +183,10 @@ class ISParseBindEntityBuilder: NSObject {
                     }
                     
                     keyPathArray = includeKeyArrayWithoutLastItem
-//                    if keyPathArray.count == 1 {
-//                        continue
-//                    }
+
                 }
             }else {
-                let value = ISParseBindEntityBuilder.mainDictionary.value(forKeyPath: keyPath)
+                _ = ISParseBindEntityBuilder.mainDictionary.value(forKeyPath: keyPath)
             }
         }
         
@@ -201,6 +195,10 @@ class ISParseBindEntityBuilder: NSObject {
         }
         
         dictionaryObjectsList = keyPathSortered
-
-    }        
+        
+        if dictionaryObjectsList.isEmpty {
+            dictionaryObjectsList.append([mainEntity:ISParseBindEntityBuilder.mainDictionary.allValues.first!])
+        }
+    }
+    
 }
