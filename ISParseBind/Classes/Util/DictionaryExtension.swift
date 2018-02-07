@@ -6,7 +6,7 @@
 //  Copyright © 2017 ilhasoft. All rights reserved.
 //
 
-extension Dictionary where Key: Hashable, Value: Any {
+extension Dictionary {
     func getValue(forKeyPath components : Array<Any>) -> Any? {
         var comps = components;
         let key = comps.remove(at: 0)

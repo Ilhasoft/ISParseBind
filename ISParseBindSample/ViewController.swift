@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parseBindView.parseObject = PFObject(withoutDataWithClassName: "Vehicule", objectId: "G4XWUcgmLL")
         parseBindView.delegate = self
     }
     

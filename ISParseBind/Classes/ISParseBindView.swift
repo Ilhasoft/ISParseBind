@@ -158,12 +158,18 @@ open class ISParseBindView: UIView {
                     
                     self.fetchedParseObject = pObject
                     
-                    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
-                        // do some task
+                    DispatchQueue.global().async {
                         DispatchQueue.main.async {
                             self.fillFields()
                         }
                     }
+                    
+//                    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+//                        // do some task
+//                        DispatchQueue.main.async {
+//                            self.fillFields()
+//                        }
+//                    }
                 }
             })
             
@@ -205,7 +211,7 @@ open class ISParseBindView: UIView {
                                 return
                             }
                         }
-                        textField.text = (value as! String)
+                        textField.text = String(describing: value)
                         
                         self.delegate?.didFill(component: component, value: value)
                         
@@ -269,7 +275,7 @@ open class ISParseBindView: UIView {
                             }
                         }
                         
-                        label.text = (value as! String)
+                        label.text = String(describing: value)
                         self.delegate?.didFill(component: component, value: value)
                     }else if let uiSwitch = component as? UISwitch {
                         
@@ -315,7 +321,7 @@ open class ISParseBindView: UIView {
             for field in fields {
                 if let field = field as? ISParseBindable, field is UIView {
                     
-                    if  !(field.fieldPath.characters.count > 0) {
+                    if  !(field.fieldPath.count > 0) {
                         continue
                     }
                     
@@ -366,7 +372,7 @@ open class ISParseBindView: UIView {
             
             var fieldValue:AnyObject!
 
-            guard fieldPath.characters.count > 0 else {
+            guard fieldPath.count > 0 else {
                 print("fieldPath is nil")
                 continue
             }
@@ -377,24 +383,24 @@ open class ISParseBindView: UIView {
             }
             
             if let textField = field as? ISParseBindable , textField is UITextField
-                && textField.fieldPath.characters.count > 0 {
+                && textField.fieldPath.count > 0 {
                 
-                if ((textField as! UITextField).text!.characters.count) > 0 {
+                if ((textField as! UITextField).text!.count) > 0 {
                     fieldValue = (textField as! UITextField).text! as AnyObject!
                 }else {
                     fieldValue = "" as AnyObject
                 }
                 
             }else if let textView = field as? ISParseBindable, textView is UITextView
-                && textView.fieldPath.characters.count > 0 {
-                if ((textView as! UITextView).text!.characters.count) > 0 {
+                && textView.fieldPath.count > 0 {
+                if ((textView as! UITextView).text!.count) > 0 {
                     fieldValue = (textView as! UITextView).text! as AnyObject!
                 }else {
                     fieldValue = "" as AnyObject
                 }
                 
             }else if let imageView = field as? ISParseBindable, imageView is UIImageView
-                && imageView.fieldPath.characters.count > 0 {
+                && imageView.fieldPath.count > 0 {
                 if (imageView as! UIImageView).image != nil {
                     fieldValue = (imageView as! UIImageView).image
                 }else {
@@ -402,7 +408,7 @@ open class ISParseBindView: UIView {
                 }
 
             }else if let slider = field as? ISParseBindable, slider is UISlider
-                && slider.fieldPath.characters.count > 0 {
+                && slider.fieldPath.count > 0 {
                 if (slider as! UISlider).value != -1 {
                     fieldValue = (slider as! UISlider).value as AnyObject!
                 }else {
@@ -410,7 +416,7 @@ open class ISParseBindView: UIView {
                 }
                 
             }else if let uiSwitch = field as? ISParseBindable, uiSwitch is UISwitch
-                && uiSwitch.fieldPath.characters.count > 0 {
+                && uiSwitch.fieldPath.count > 0 {
                 fieldValue = (uiSwitch as! UISwitch).isOn as AnyObject!
                 
             }else {

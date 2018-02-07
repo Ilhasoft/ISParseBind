@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -145,11 +145,11 @@
                             <constraint firstItem="PNc-RF-ytD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="21" id="xzx-CI-Iew"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="fields" destination="0Wq-sB-Dzm" id="Yst-xo-7Yx"/>
-                            <outletCollection property="fields" destination="PNc-RF-ytD" id="xK3-7b-MgJ"/>
-                            <outletCollection property="fields" destination="Rz4-UW-03u" id="yYw-oa-QWU"/>
-                            <outletCollection property="fields" destination="Cyh-op-q6r" id="fZe-fs-jM1"/>
-                            <outletCollection property="fields" destination="2tM-gG-ss6" id="Lcy-nd-DUd"/>
+                            <outletCollection property="fields" destination="0Wq-sB-Dzm" collectionClass="NSMutableArray" id="Yst-xo-7Yx"/>
+                            <outletCollection property="fields" destination="PNc-RF-ytD" collectionClass="NSMutableArray" id="xK3-7b-MgJ"/>
+                            <outletCollection property="fields" destination="Rz4-UW-03u" collectionClass="NSMutableArray" id="yYw-oa-QWU"/>
+                            <outletCollection property="fields" destination="Cyh-op-q6r" collectionClass="NSMutableArray" id="fZe-fs-jM1"/>
+                            <outletCollection property="fields" destination="2tM-gG-ss6" collectionClass="NSMutableArray" id="EK0-6U-y4u"/>
                         </connections>
                     </view>
                     <connections>

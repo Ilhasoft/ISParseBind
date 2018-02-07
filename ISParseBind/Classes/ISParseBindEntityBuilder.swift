@@ -160,10 +160,10 @@ class ISParseBindEntityBuilder: NSObject {
                 for _ in keyPathArray {
                     
                     let value = ISParseBindEntityBuilder.mainDictionary.value(forKeyPath: keyPath)
-                    let filtered = dictionaryObjectsList.filter {( ($0 as! [String:Any]).keys.first! == keyPath )}
+                    let filtered = dictionaryObjectsList.filter {( $0.keys.first! == keyPath )}
                     
                     if filtered.isEmpty {
-                        dictionaryObjectsList.append([keyPath:value])
+                        dictionaryObjectsList.append([keyPath:value as Any])
                     }
                     
                     var includeKeyArrayWithoutLastItem = [String]()
